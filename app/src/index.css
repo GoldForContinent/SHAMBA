@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* SHAMBAMALL Brand Colors */
+    --color-primary: #1F4A3E;
+    --color-secondary: #C79A3E;
+    --color-accent: #D48B55;
+    --color-background: #F8F6F2;
+    --color-text-primary: #2D2A24;
+    --color-text-secondary: #6B6B6B;
+    --color-success: #4CAF50;
+
+    /* Shadcn UI Theme Variables */
+    --background: 40 20% 96%;
+    --foreground: 36 10% 16%;
+    --card: 40 20% 96%;
+    --card-foreground: 36 10% 16%;
+    --popover: 40 20% 98%;
+    --popover-foreground: 36 10% 16%;
+    --primary: 158 40% 21%;
+    --primary-foreground: 40 20% 96%;
+    --secondary: 40 50% 51%;
+    --secondary-foreground: 36 10% 16%;
+    --muted: 40 10% 90%;
+    --muted-foreground: 0 0% 42%;
+    --accent: 25 55% 58%;
+    --accent-foreground: 36 10% 16%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 40 10% 85%;
+    --input: 40 10% 85%;
+    --ring: 158 40% 21%;
+    --radius: 0.625rem;
+    --sidebar-background: 40 20% 96%;
+    --sidebar-foreground: 36 10% 16%;
+    --sidebar-primary: 158 40% 21%;
+    --sidebar-primary-foreground: 40 20% 96%;
+    --sidebar-accent: 40 10% 90%;
+    --sidebar-accent-foreground: 36 10% 16%;
+    --sidebar-border: 40 10% 85%;
+    --sidebar-ring: 158 40% 21%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Lora', serif;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+
+  button, a, input, textarea, select, label {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .font-body {
+    font-family: 'Lora', serif;
+  }
+
+  .font-ui {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .text-brand-primary {
+    color: var(--color-primary);
+  }
+
+  .text-brand-secondary {
+    color: var(--color-secondary);
+  }
+
+  .text-brand-accent {
+    color: var(--color-accent);
+  }
+
+  .bg-brand-primary {
+    background-color: var(--color-primary);
+  }
+
+  .bg-brand-secondary {
+    background-color: var(--color-secondary);
+  }
+
+  .bg-brand-accent {
+    background-color: var(--color-accent);
+  }
+
+  .bg-brand-cream {
+    background-color: var(--color-background);
+  }
+
+  .shadow-soft {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .shadow-card {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .shadow-lift {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .transition-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .transition-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F0EDE8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1F4A3E;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #16382F;
+}
+
+/* WhatsApp pulse animation */
+@keyframes whatsapp-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+  }
+}
+
+.whatsapp-pulse {
+  animation: whatsapp-pulse 2s infinite;
+}

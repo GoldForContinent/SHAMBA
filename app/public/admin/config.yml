@@ -1,0 +1,82 @@
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: 'Create {{collection}} "{{slug}}"'
+    update: 'Update {{collection}} "{{slug}}"'
+    delete: 'Delete {{collection}} "{{slug}}"'
+    uploadMedia: '[skip ci] Upload "{{path}}"'
+    deleteMedia: '[skip ci] Delete "{{path}}"'
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "products"
+    label: "Products"
+    folder: "src/data/products-cms"
+    create: true
+    slug: "{{productName}}"
+    fields:
+      - { label: "ID", name: "id", widget: "number", required: true }
+      - { label: "Product Name", name: "productName", widget: "string", required: true }
+      - { label: "Slug", name: "slug", widget: "string", required: true, hint: "URL-friendly identifier (auto-generated from name if left blank)" }
+      - label: "Category", name: "category", widget: "select", required: true, options:
+          - "Oils & Fats"
+          - "Grains & Cereals"
+          - "Pulses & Legumes"
+          - "Nuts & Seeds"
+          - "Dried Fruits"
+          - "Spices & Herbs"
+          - "Flours & Meals"
+          - "Sweeteners"
+          - "Beverages"
+      - { label: "Sub-Category", name: "subCategory", widget: "string", required: false }
+      - { label: "Short Description", name: "description", widget: "text", required: true }
+      - { label: "Full Description", name: "fullDescription", widget: "text", required: false }
+      - { label: "Price", name: "price", widget: "number", required: false, hint: "Leave blank for inquiry-only products" }
+      - { label: "Image URL", name: "imageUrl", widget: "string", required: true }
+      - label: "Stock Status", name: "stockStatus", widget: "select", required: true, default: "In Stock", options:
+          - "In Stock"
+          - "Out of Stock"
+          - "Pre-Order"
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Origin", name: "origin", widget: "string", required: false }
+      - { label: "Packaging", name: "packaging", widget: "string", required: false }
+      - { label: "Minimum Order Quantity", name: "moq", widget: "string", required: false }
+
+  - name: "site-pages"
+    label: "Site Pages"
+    files:
+      - label: "What We Do"
+        name: "what-we-do"
+        file: "src/data/pages/what-we-do.yml"
+        fields:
+          - { label: "Page Title", name: "pageTitle", widget: "string", default: "What We Do" }
+          - { label: "Mission Statement", name: "missionStatement", widget: "text" }
+          - { label: "Mission Description", name: "missionDescription", widget: "text" }
+          - { label: "Vision Statement", name: "visionStatement", widget: "text" }
+          - { label: "Vision Description", name: "visionDescription", widget: "text" }
+          - { label: "Sustainability Heading", name: "sustainabilityHeading", widget: "string" }
+          - { label: "Sustainability Text", name: "sustainabilityText", widget: "text" }
+
+      - label: "Quality"
+        name: "quality"
+        file: "src/data/pages/quality.yml"
+        fields:
+          - { label: "Page Title", name: "pageTitle", widget: "string", default: "Quality" }
+          - { label: "Team Heading", name: "teamHeading", widget: "string" }
+          - { label: "Team Text", name: "teamText", widget: "text" }
+          - { label: "Standards Heading", name: "standardsHeading", widget: "string" }
+          - { label: "Disclaimer Text", name: "disclaimerText", widget: "text" }
+
+      - label: "Contact Info"
+        name: "contact-info"
+        file: "src/data/pages/contact-info.yml"
+        fields:
+          - { label: "Company Name", name: "companyName", widget: "string" }
+          - { label: "Address", name: "address", widget: "text" }
+          - { label: "Phone Number", name: "phone", widget: "string" }
+          - { label: "Email Address", name: "email", widget: "string" }
+          - { label: "WhatsApp Number", name: "whatsappNumber", widget: "string", hint: "Include country code, no spaces or plus sign (e.g. 254736716020)" }
+          - { label: "Business Hours", name: "businessHours", widget: "string", default: "Mon - Fri: 8:00 AM - 5:00 PM EAT" }
