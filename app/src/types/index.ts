@@ -15,6 +15,7 @@ export interface Product {
   moq?: string;
   applications?: string[];
   specifications?: Record<string, string>;
+  nutritionalValues?: Record<string, string>;
   qualityInfo?: string;
   shippingInfo?: string;
 }

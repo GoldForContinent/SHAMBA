@@ -108,6 +108,18 @@ collections:
           - label: "Spec Value"
             name: "specValue"
             widget: "string"
+      - label: "Nutritional Values"
+        name: "nutritionalValues"
+        widget: "object"
+        required: false
+        hint: "Key-value pairs for nutritional info (e.g. Energy: 3760 kJ, Fat: 9 g)"
+        fields:
+          - label: "Nutrient"
+            name: "nutrient"
+            widget: "string"
+          - label: "Value"
+            name: "value"
+            widget: "string"
       - label: "Quality Assurance"
         name: "qualityInfo"
         widget: "text"

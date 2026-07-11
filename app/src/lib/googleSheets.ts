@@ -18,6 +18,7 @@ interface RawSheetRow {
   moq?: string;
   applications?: string;
   specifications?: string;
+  nutritionalValues?: string;
   qualityInfo?: string;
   shippingInfo?: string;
   [key: string]: string | undefined;
@@ -49,6 +50,15 @@ function mapRowToProduct(row: RawSheetRow, index: number): Product {
       )
     : undefined;
 
+  const nutritionalValues = row.nutritionalValues?.trim()
+    ? Object.fromEntries(
+        row.nutritionalValues.split(';').map(pair => {
+          const [key, ...rest] = pair.split(':');
+          return [key?.trim(), rest.join(':').trim()];
+        }).filter(([k, v]) => k && v)
+      )
+    : undefined;
+
   return {
     id: row.id ? Number(row.id) : index + 1,
     slug: row.slug?.trim() || toSlug(name),
@@ -68,6 +78,7 @@ function mapRowToProduct(row: RawSheetRow, index: number): Product {
     moq: row.moq?.trim() || undefined,
     applications,
     specifications: specifications && Object.keys(specifications).length > 0 ? specifications : undefined,
+    nutritionalValues: nutritionalValues && Object.keys(nutritionalValues).length > 0 ? nutritionalValues : undefined,
     qualityInfo: row.qualityInfo?.trim() || undefined,
     shippingInfo: row.shippingInfo?.trim() || undefined,
   };
