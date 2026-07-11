@@ -150,10 +150,11 @@ export default function ProductDetail() {
             </Link>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          {/* Top: Image + Quick Info + CTA */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12">
             {/* Product Image */}
             <ScrollReveal>
-              <div className="bg-white rounded-2xl overflow-hidden shadow-card aspect-square">
+              <div className="bg-white rounded-2xl overflow-hidden shadow-card aspect-square lg:sticky lg:top-24">
                 <img
                   src={product.imageUrl}
                   alt={product.productName}
@@ -169,6 +170,11 @@ export default function ProductDetail() {
                   <span className="px-2.5 py-1 bg-[#1F4A3E]/10 text-[#1F4A3E] text-xs font-ui font-medium rounded-md">
                     {product.category}
                   </span>
+                  {product.subCategory && (
+                    <span className="px-2.5 py-1 bg-[#C79A3E]/10 text-[#C79A3E] text-xs font-ui font-medium rounded-md">
+                      {product.subCategory}
+                    </span>
+                  )}
                   <span className={`px-2.5 py-1 text-xs font-ui font-medium rounded-md ${getStockBadgeClassesForProduct(product.stockStatus)}`}>
                     {product.stockStatus}
                   </span>
@@ -179,7 +185,7 @@ export default function ProductDetail() {
                 </h1>
 
                 <p className="font-body text-base text-text-secondary leading-relaxed mb-6">
-                  {product.fullDescription || product.description}
+                  {product.description}
                 </p>
 
                 {/* Details Grid */}
@@ -219,72 +225,6 @@ export default function ProductDetail() {
                   )}
                 </div>
 
-                {/* Applications */}
-                {product.applications && product.applications.length > 0 && (
-                  <div className="mb-6">
-                    <h3 className="font-heading font-semibold text-base text-text-primary mb-3 flex items-center gap-2">
-                      <FiGrid size={16} className="text-[#C79A3E]" />
-                      Applications
-                    </h3>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {product.applications.map((app, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm font-body text-text-secondary">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#C79A3E] mt-1.5 flex-shrink-0" />
-                          {app}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {/* Specifications */}
-                {product.specifications && Object.keys(product.specifications).length > 0 && (
-                  <div className="mb-6">
-                    <h3 className="font-heading font-semibold text-base text-text-primary mb-3">
-                      Product Specifications
-                    </h3>
-                    <div className="bg-white rounded-xl overflow-hidden">
-                      {Object.entries(product.specifications).map(([key, value], i) => (
-                        <div
-                          key={key}
-                          className={`flex items-center justify-between px-4 py-3 text-sm ${
-                            i % 2 === 0 ? 'bg-[#F8F6F2]' : 'bg-white'
-                          }`}
-                        >
-                          <span className="font-ui font-medium text-text-primary">{key}</span>
-                          <span className="font-body text-text-secondary text-right">{value}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Quality Info */}
-                {product.qualityInfo && (
-                  <div className="mb-6">
-                    <h3 className="font-heading font-semibold text-base text-text-primary mb-3 flex items-center gap-2">
-                      <FiCheckCircle size={16} className="text-[#C79A3E]" />
-                      Quality Assurance
-                    </h3>
-                    <p className="font-body text-sm text-text-secondary leading-relaxed bg-white p-4 rounded-xl">
-                      {product.qualityInfo}
-                    </p>
-                  </div>
-                )}
-
-                {/* Shipping Info */}
-                {product.shippingInfo && (
-                  <div className="mb-6">
-                    <h3 className="font-heading font-semibold text-base text-text-primary mb-3 flex items-center gap-2">
-                      <FiTruck size={16} className="text-[#C79A3E]" />
-                      Shipping & Logistics
-                    </h3>
-                    <p className="font-body text-sm text-text-secondary leading-relaxed bg-white p-4 rounded-xl">
-                      {product.shippingInfo}
-                    </p>
-                  </div>
-                )}
-
                 {/* CTA */}
                 <div className="mt-auto pt-4">
                   <a
@@ -302,6 +242,99 @@ export default function ProductDetail() {
                 </div>
               </div>
             </ScrollReveal>
+          </div>
+
+          {/* Full-Width Detail Sections */}
+          <div className="max-w-4xl mx-auto space-y-10">
+            {/* Full Description */}
+            {product.fullDescription && (
+              <ScrollReveal>
+                <div>
+                  <h2 className="font-heading font-bold text-xl sm:text-2xl text-text-primary mb-4">
+                    About This Product
+                  </h2>
+                  <div className="font-body text-base text-text-secondary leading-relaxed whitespace-pre-line">
+                    {product.fullDescription}
+                  </div>
+                </div>
+              </ScrollReveal>
+            )}
+
+            {/* Applications */}
+            {product.applications && product.applications.length > 0 && (
+              <ScrollReveal>
+                <div>
+                  <h2 className="font-heading font-bold text-xl sm:text-2xl text-text-primary mb-4 flex items-center gap-2">
+                    <FiGrid size={20} className="text-[#C79A3E]" />
+                    Product Applications
+                  </h2>
+                  <div className="bg-white rounded-xl p-6 shadow-card">
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {product.applications.map((app, i) => (
+                        <li key={i} className="flex items-start gap-3 text-sm font-body text-text-secondary">
+                          <span className="w-2 h-2 rounded-full bg-[#C79A3E] mt-1.5 flex-shrink-0" />
+                          {app}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </ScrollReveal>
+            )}
+
+            {/* Specifications */}
+            {product.specifications && Object.keys(product.specifications).length > 0 && (
+              <ScrollReveal>
+                <div>
+                  <h2 className="font-heading font-bold text-xl sm:text-2xl text-text-primary mb-4">
+                    Product Specifications
+                  </h2>
+                  <div className="bg-white rounded-xl overflow-hidden shadow-card">
+                    {Object.entries(product.specifications).map(([key, value], i) => (
+                      <div
+                        key={key}
+                        className={`flex items-center justify-between px-6 py-4 text-sm ${
+                          i % 2 === 0 ? 'bg-[#F8F6F2]' : 'bg-white'
+                        } ${i > 0 ? 'border-t border-[#1F4A3E]/5' : ''}`}
+                      >
+                        <span className="font-ui font-medium text-text-primary">{key}</span>
+                        <span className="font-body text-text-secondary text-right max-w-[60%]">{value}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </ScrollReveal>
+            )}
+
+            {/* Quality & Shipping */}
+            {(product.qualityInfo || product.shippingInfo) && (
+              <ScrollReveal>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {product.qualityInfo && (
+                    <div className="bg-white rounded-xl p-6 shadow-card">
+                      <h3 className="font-heading font-semibold text-base text-text-primary mb-3 flex items-center gap-2">
+                        <FiCheckCircle size={18} className="text-[#C79A3E]" />
+                        Quality Assurance
+                      </h3>
+                      <p className="font-body text-sm text-text-secondary leading-relaxed">
+                        {product.qualityInfo}
+                      </p>
+                    </div>
+                  )}
+                  {product.shippingInfo && (
+                    <div className="bg-white rounded-xl p-6 shadow-card">
+                      <h3 className="font-heading font-semibold text-base text-text-primary mb-3 flex items-center gap-2">
+                        <FiTruck size={18} className="text-[#C79A3E]" />
+                        Shipping & Logistics
+                      </h3>
+                      <p className="font-body text-sm text-text-secondary leading-relaxed">
+                        {product.shippingInfo}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </ScrollReveal>
+            )}
           </div>
         </div>
       </section>
