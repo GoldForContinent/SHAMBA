@@ -19,6 +19,13 @@ export default function Shop() {
 
   const { products, loading, error } = useProducts();
 
+  const categoriesWithCounts = useMemo(() => {
+    return categories.map((cat) => ({
+      ...cat,
+      productCount: products.filter((p) => p.category === cat.name).length,
+    }));
+  }, [products]);
+
   useEffect(() => {
     const cat = searchParams.get('category');
     if (cat) {
@@ -82,7 +89,7 @@ export default function Shop() {
             <p className="font-body text-base text-white/80 max-w-2xl">
               {loading
                 ? 'Loading products...'
-                : `${filteredProducts.length} products available across ${categories.length} categories. All products can be inquired via WhatsApp.`}
+                : `${filteredProducts.length} products available across ${categoriesWithCounts.length} categories. All products can be inquired via WhatsApp.`}
             </p>
           </ScrollReveal>
         </div>
@@ -113,7 +120,7 @@ export default function Shop() {
                       ({loading ? '...' : products.length})
                     </span>
                   </button>
-                  {categories.map((cat) => (
+                  {categoriesWithCounts.map((cat) => (
                     <button
                       key={cat.slug}
                       onClick={() => handleCategoryChange(cat.slug)}
@@ -146,7 +153,7 @@ export default function Shop() {
                 >
                   All
                 </button>
-                {categories.map((cat) => (
+                {categoriesWithCounts.map((cat) => (
                   <button
                     key={cat.slug}
                     onClick={() => handleCategoryChange(cat.slug)}
