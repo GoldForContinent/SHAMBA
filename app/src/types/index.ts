@@ -14,7 +14,8 @@ export interface Product {
   packaging?: string;
   moq?: string;
   applications?: string[];
-  specifications?: Record<string, string>;
+  descriptionAttributes?: Record<string, string>;
+  productDetails?: Record<string, string>;
   nutritionalValues?: Record<string, string>;
   qualityInfo?: string;
   shippingInfo?: string;

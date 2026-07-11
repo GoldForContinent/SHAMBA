@@ -282,15 +282,39 @@ export default function ProductDetail() {
               </ScrollReveal>
             )}
 
-            {/* Specifications */}
-            {product.specifications && Object.keys(product.specifications).length > 0 && (
+            {/* Product Details (flexible attribute-value pairs) */}
+            {product.productDetails && Object.keys(product.productDetails).length > 0 && (
               <ScrollReveal>
                 <div>
                   <h2 className="font-heading font-bold text-xl sm:text-2xl text-text-primary mb-4">
-                    Product Specifications
+                    Product Details
                   </h2>
                   <div className="bg-white rounded-xl overflow-hidden shadow-card">
-                    {Object.entries(product.specifications).map(([key, value], i) => (
+                    {Object.entries(product.productDetails).map(([key, value], i) => (
+                      <div
+                        key={key}
+                        className={`flex items-center justify-between px-6 py-4 text-sm ${
+                          i % 2 === 0 ? 'bg-[#F8F6F2]' : 'bg-white'
+                        } ${i > 0 ? 'border-t border-[#1F4A3E]/5' : ''}`}
+                      >
+                        <span className="font-ui font-medium text-text-primary">{key}</span>
+                        <span className="font-body text-text-secondary text-right max-w-[60%]">{value}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </ScrollReveal>
+            )}
+
+            {/* Description Attributes */}
+            {product.descriptionAttributes && Object.keys(product.descriptionAttributes).length > 0 && (
+              <ScrollReveal>
+                <div>
+                  <h2 className="font-heading font-bold text-xl sm:text-2xl text-text-primary mb-4">
+                    Description
+                  </h2>
+                  <div className="bg-white rounded-xl overflow-hidden shadow-card">
+                    {Object.entries(product.descriptionAttributes).map(([key, value], i) => (
                       <div
                         key={key}
                         className={`flex items-center justify-between px-6 py-4 text-sm ${

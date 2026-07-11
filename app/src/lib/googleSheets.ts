@@ -17,7 +17,8 @@ interface RawSheetRow {
   packaging?: string;
   moq?: string;
   applications?: string;
-  specifications?: string;
+  descriptionAttributes?: string;
+  productDetails?: string;
   nutritionalValues?: string;
   qualityInfo?: string;
   shippingInfo?: string;
@@ -31,6 +32,15 @@ function toSlug(name: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
+function parseKeyValuePairs(raw: string): Record<string, string> {
+  return Object.fromEntries(
+    raw.split(';').map(pair => {
+      const [key, ...rest] = pair.split(':');
+      return [key?.trim(), rest.join(':').trim()];
+    }).filter(([k, v]) => k && v)
+  );
+}
+
 function mapRowToProduct(row: RawSheetRow, index: number): Product {
   const name = row.productName ?? `Product ${index + 1}`;
   const priceStr = row.price?.trim();
@@ -41,22 +51,16 @@ function mapRowToProduct(row: RawSheetRow, index: number): Product {
     ? row.applications.split(';').map(s => s.trim()).filter(Boolean)
     : undefined;
 
-  const specifications = row.specifications?.trim()
-    ? Object.fromEntries(
-        row.specifications.split(';').map(pair => {
-          const [key, ...rest] = pair.split(':');
-          return [key?.trim(), rest.join(':').trim()];
-        }).filter(([k, v]) => k && v)
-      )
+  const descriptionAttributes = row.descriptionAttributes?.trim()
+    ? parseKeyValuePairs(row.descriptionAttributes)
+    : undefined;
+
+  const productDetails = row.productDetails?.trim()
+    ? parseKeyValuePairs(row.productDetails)
     : undefined;
 
   const nutritionalValues = row.nutritionalValues?.trim()
-    ? Object.fromEntries(
-        row.nutritionalValues.split(';').map(pair => {
-          const [key, ...rest] = pair.split(':');
-          return [key?.trim(), rest.join(':').trim()];
-        }).filter(([k, v]) => k && v)
-      )
+    ? parseKeyValuePairs(row.nutritionalValues)
     : undefined;
 
   return {
@@ -77,7 +81,8 @@ function mapRowToProduct(row: RawSheetRow, index: number): Product {
     packaging: row.packaging?.trim() || undefined,
     moq: row.moq?.trim() || undefined,
     applications,
-    specifications: specifications && Object.keys(specifications).length > 0 ? specifications : undefined,
+    descriptionAttributes: descriptionAttributes && Object.keys(descriptionAttributes).length > 0 ? descriptionAttributes : undefined,
+    productDetails: productDetails && Object.keys(productDetails).length > 0 ? productDetails : undefined,
     nutritionalValues: nutritionalValues && Object.keys(nutritionalValues).length > 0 ? nutritionalValues : undefined,
     qualityInfo: row.qualityInfo?.trim() || undefined,
     shippingInfo: row.shippingInfo?.trim() || undefined,

@@ -96,23 +96,35 @@ collections:
         widget: "list"
         required: false
         hint: "List of product use cases (e.g. Rope manufacturing, Food processing)"
-      - label: "Specifications"
-        name: "specifications"
+      - label: "Description"
+        name: "descriptionAttributes"
         widget: "object"
         required: false
-        hint: "Key-value pairs for product specs (e.g. Grade, Color, Length, Moisture)"
+        hint: "Flexible attribute-value pairs (e.g. Country of Origin, Latin Name, Agricultural Origin)"
         fields:
-          - label: "Spec Name"
-            name: "specName"
+          - label: "Attribute"
+            name: "attribute"
             widget: "string"
-          - label: "Spec Value"
-            name: "specValue"
+          - label: "Value"
+            name: "value"
+            widget: "string"
+      - label: "Product Details"
+        name: "productDetails"
+        widget: "object"
+        required: false
+        hint: "Flexible attribute-value pairs (e.g. Ingredients, Process)"
+        fields:
+          - label: "Attribute"
+            name: "attribute"
+            widget: "string"
+          - label: "Value"
+            name: "value"
             widget: "string"
       - label: "Nutritional Values"
         name: "nutritionalValues"
         widget: "object"
         required: false
-        hint: "Key-value pairs for nutritional info (e.g. Energy: 3760 kJ, Fat: 9 g)"
+        hint: "Flexible attribute-value pairs (e.g. Energy: 3760 kJ, Fat: 9 g)"
         fields:
           - label: "Nutrient"
             name: "nutrient"
