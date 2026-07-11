@@ -91,6 +91,33 @@ collections:
         name: "moq"
         widget: "string"
         required: false
+      - label: "Applications"
+        name: "applications"
+        widget: "list"
+        required: false
+        hint: "List of product use cases (e.g. Rope manufacturing, Food processing)"
+      - label: "Specifications"
+        name: "specifications"
+        widget: "object"
+        required: false
+        hint: "Key-value pairs for product specs (e.g. Grade, Color, Length, Moisture)"
+        fields:
+          - label: "Spec Name"
+            name: "specName"
+            widget: "string"
+          - label: "Spec Value"
+            name: "specValue"
+            widget: "string"
+      - label: "Quality Assurance"
+        name: "qualityInfo"
+        widget: "text"
+        required: false
+        hint: "Certifications, testing, compliance details"
+      - label: "Shipping & Logistics"
+        name: "shippingInfo"
+        widget: "text"
+        required: false
+        hint: "Container loading, delivery terms, shipping details"
 
   - name: "site-pages"
     label: "Site Pages"

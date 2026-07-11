@@ -16,6 +16,10 @@ interface RawSheetRow {
   origin?: string;
   packaging?: string;
   moq?: string;
+  applications?: string;
+  specifications?: string;
+  qualityInfo?: string;
+  shippingInfo?: string;
   [key: string]: string | undefined;
 }
 
@@ -31,6 +35,19 @@ function mapRowToProduct(row: RawSheetRow, index: number): Product {
   const priceStr = row.price?.trim();
   const price = priceStr ? Number(priceStr) : undefined;
   const featuredStr = row.featured?.trim().toUpperCase();
+
+  const applications = row.applications?.trim()
+    ? row.applications.split(';').map(s => s.trim()).filter(Boolean)
+    : undefined;
+
+  const specifications = row.specifications?.trim()
+    ? Object.fromEntries(
+        row.specifications.split(';').map(pair => {
+          const [key, ...rest] = pair.split(':');
+          return [key?.trim(), rest.join(':').trim()];
+        }).filter(([k, v]) => k && v)
+      )
+    : undefined;
 
   return {
     id: row.id ? Number(row.id) : index + 1,
@@ -49,6 +66,10 @@ function mapRowToProduct(row: RawSheetRow, index: number): Product {
     origin: row.origin?.trim() || undefined,
     packaging: row.packaging?.trim() || undefined,
     moq: row.moq?.trim() || undefined,
+    applications,
+    specifications: specifications && Object.keys(specifications).length > 0 ? specifications : undefined,
+    qualityInfo: row.qualityInfo?.trim() || undefined,
+    shippingInfo: row.shippingInfo?.trim() || undefined,
   };
 }
 

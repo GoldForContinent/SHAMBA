@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useParams, Link, Navigate } from 'react-router';
-import { FiMessageCircle, FiArrowLeft, FiMapPin, FiPackage, FiCheckCircle } from 'react-icons/fi';
+import { FiMessageCircle, FiArrowLeft, FiMapPin, FiPackage, FiCheckCircle, FiGrid, FiTruck } from 'react-icons/fi';
 import ScrollReveal from '@/components/ui-custom/ScrollReveal';
 import StaggerContainer, { StaggerItem } from '@/components/ui-custom/StaggerContainer';
 import { categories } from '@/data/products';
@@ -218,6 +218,72 @@ export default function ProductDetail() {
                     </div>
                   )}
                 </div>
+
+                {/* Applications */}
+                {product.applications && product.applications.length > 0 && (
+                  <div className="mb-6">
+                    <h3 className="font-heading font-semibold text-base text-text-primary mb-3 flex items-center gap-2">
+                      <FiGrid size={16} className="text-[#C79A3E]" />
+                      Applications
+                    </h3>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {product.applications.map((app, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm font-body text-text-secondary">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#C79A3E] mt-1.5 flex-shrink-0" />
+                          {app}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Specifications */}
+                {product.specifications && Object.keys(product.specifications).length > 0 && (
+                  <div className="mb-6">
+                    <h3 className="font-heading font-semibold text-base text-text-primary mb-3">
+                      Product Specifications
+                    </h3>
+                    <div className="bg-white rounded-xl overflow-hidden">
+                      {Object.entries(product.specifications).map(([key, value], i) => (
+                        <div
+                          key={key}
+                          className={`flex items-center justify-between px-4 py-3 text-sm ${
+                            i % 2 === 0 ? 'bg-[#F8F6F2]' : 'bg-white'
+                          }`}
+                        >
+                          <span className="font-ui font-medium text-text-primary">{key}</span>
+                          <span className="font-body text-text-secondary text-right">{value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Quality Info */}
+                {product.qualityInfo && (
+                  <div className="mb-6">
+                    <h3 className="font-heading font-semibold text-base text-text-primary mb-3 flex items-center gap-2">
+                      <FiCheckCircle size={16} className="text-[#C79A3E]" />
+                      Quality Assurance
+                    </h3>
+                    <p className="font-body text-sm text-text-secondary leading-relaxed bg-white p-4 rounded-xl">
+                      {product.qualityInfo}
+                    </p>
+                  </div>
+                )}
+
+                {/* Shipping Info */}
+                {product.shippingInfo && (
+                  <div className="mb-6">
+                    <h3 className="font-heading font-semibold text-base text-text-primary mb-3 flex items-center gap-2">
+                      <FiTruck size={16} className="text-[#C79A3E]" />
+                      Shipping & Logistics
+                    </h3>
+                    <p className="font-body text-sm text-text-secondary leading-relaxed bg-white p-4 rounded-xl">
+                      {product.shippingInfo}
+                    </p>
+                  </div>
+                )}
 
                 {/* CTA */}
                 <div className="mt-auto pt-4">

@@ -13,6 +13,10 @@ export interface Product {
   origin?: string;
   packaging?: string;
   moq?: string;
+  applications?: string[];
+  specifications?: Record<string, string>;
+  qualityInfo?: string;
+  shippingInfo?: string;
 }
 
 export interface Category {
