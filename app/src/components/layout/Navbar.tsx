@@ -45,10 +45,14 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 flex-shrink-0">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-brand-primary rounded-lg flex items-center justify-center">
+              <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center transition-colors duration-300 ${
+                isScrolled ? 'bg-brand-primary' : 'bg-white/20 backdrop-blur-sm'
+              }`}>
                 <span className="text-white font-heading font-bold text-sm sm:text-base">S</span>
               </div>
-              <span className="font-heading font-bold text-lg sm:text-xl text-brand-primary tracking-tight">
+              <span className={`font-heading font-bold text-lg sm:text-xl tracking-tight transition-colors duration-300 ${
+                isScrolled ? 'text-brand-primary' : 'text-white'
+              }`}>
                 SHAMBAMALL
               </span>
             </Link>
@@ -61,8 +65,12 @@ export default function Navbar() {
                   to={link.href}
                   className={`px-3 py-2 text-sm font-ui font-medium rounded-lg transition-all duration-200 ${
                     location.pathname === link.href
-                      ? 'text-brand-primary bg-brand-primary/10'
-                      : 'text-text-secondary hover:text-brand-primary hover:bg-brand-primary/5'
+                      ? isScrolled
+                        ? 'text-brand-primary bg-brand-primary/10'
+                        : 'text-white bg-white/15'
+                      : isScrolled
+                        ? 'text-text-secondary hover:text-brand-primary hover:bg-brand-primary/5'
+                        : 'text-white/90 hover:text-white hover:bg-white/10'
                   }`}
                 >
                   {link.label}
@@ -74,13 +82,21 @@ export default function Navbar() {
             <div className="flex items-center gap-3">
               <Link
                 to="/shop"
-                className="hidden sm:inline-flex px-4 py-2 bg-brand-primary text-white text-sm font-ui font-semibold rounded-lg hover:bg-[#16382F] transition-colors duration-200 shadow-card hover:shadow-lift"
+                className={`hidden sm:inline-flex px-4 py-2 text-sm font-ui font-semibold rounded-lg transition-all duration-200 ${
+                  isScrolled
+                    ? 'bg-brand-primary text-white hover:bg-[#16382F] shadow-card hover:shadow-lift'
+                    : 'bg-white text-brand-primary hover:bg-white/90 shadow-lg'
+                }`}
               >
                 Shop Now
               </Link>
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden p-2 rounded-lg text-text-primary hover:bg-brand-primary/10 transition-colors"
+                className={`lg:hidden p-2 rounded-lg transition-colors ${
+                  isScrolled
+                    ? 'text-text-primary hover:bg-brand-primary/10'
+                    : 'text-white hover:bg-white/10'
+                }`}
                 aria-label="Toggle menu"
               >
                 {isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
