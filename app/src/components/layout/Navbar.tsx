@@ -8,6 +8,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const isHomepage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,12 +47,12 @@ export default function Navbar() {
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 flex-shrink-0">
               <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center transition-colors duration-300 ${
-                isScrolled ? 'bg-brand-primary' : 'bg-white/20 backdrop-blur-sm'
+                !isHomepage || isScrolled ? 'bg-brand-primary' : 'bg-white/20 backdrop-blur-sm'
               }`}>
                 <span className="text-white font-heading font-bold text-sm sm:text-base">S</span>
               </div>
               <span className={`font-heading font-bold text-lg sm:text-xl tracking-tight transition-colors duration-300 ${
-                isScrolled ? 'text-brand-primary' : 'text-white'
+                !isHomepage || isScrolled ? 'text-brand-primary' : 'text-white'
               }`}>
                 SHAMBAMALL
               </span>
@@ -65,10 +66,10 @@ export default function Navbar() {
                   to={link.href}
                   className={`px-3 py-2 text-sm font-ui font-medium rounded-lg transition-all duration-200 ${
                     location.pathname === link.href
-                      ? isScrolled
+                      ? !isHomepage || isScrolled
                         ? 'text-brand-primary bg-brand-primary/10'
                         : 'text-white bg-white/15'
-                      : isScrolled
+                      : !isHomepage || isScrolled
                         ? 'text-text-secondary hover:text-brand-primary hover:bg-brand-primary/5'
                         : 'text-white/90 hover:text-white hover:bg-white/10'
                   }`}
@@ -83,7 +84,7 @@ export default function Navbar() {
               <Link
                 to="/shop"
                 className={`hidden sm:inline-flex px-4 py-2 text-sm font-ui font-semibold rounded-lg transition-all duration-200 ${
-                  isScrolled
+                  !isHomepage || isScrolled
                     ? 'bg-brand-primary text-white hover:bg-[#16382F] shadow-card hover:shadow-lift'
                     : 'bg-white text-brand-primary hover:bg-white/90 shadow-lg'
                 }`}
@@ -93,7 +94,7 @@ export default function Navbar() {
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className={`lg:hidden p-2 rounded-lg transition-colors ${
-                  isScrolled
+                  !isHomepage || isScrolled
                     ? 'text-text-primary hover:bg-brand-primary/10'
                     : 'text-white hover:bg-white/10'
                 }`}
