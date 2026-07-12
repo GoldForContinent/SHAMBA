@@ -159,7 +159,7 @@ export default function WhatWeDo() {
               </h2>
               <div className="space-y-4 font-body text-text-secondary leading-relaxed">
                 <p>
-                  Our product range spans nine major categories of agricultural commodities — from cold-pressed oils and ancient grains to exotic spices and premium coffee. Each category is curated to meet the highest standards of quality, traceability, and consistency.
+                  Our product range spans nine major categories of agricultural commodities — from premium oils and quality coffee to cereals, pulses, spices, hides, and sisal fiber. Each category is curated to meet the highest standards of quality, traceability, and consistency.
                 </p>
                 <p>
                   We work directly with certified producers, cooperatives, and processing facilities across Kenya, Tanzania, Uganda, and Ethiopia. This direct relationship model ensures competitive pricing, consistent supply, and complete transparency — from farm gate to final delivery.

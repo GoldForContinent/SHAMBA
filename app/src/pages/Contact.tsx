@@ -193,14 +193,14 @@ export default function Contact() {
                           >
                             <option value="">Select a category</option>
                             <option value="oils-fats">Oils & Fats</option>
-                            <option value="grains-cereals">Grains & Cereals</option>
-                            <option value="pulses-legumes">Pulses & Legumes</option>
+                            <option value="coffee">Coffee</option>
+                            <option value="cereals-pulses">Cereals & Pulses</option>
                             <option value="nuts-seeds">Nuts & Seeds</option>
-                            <option value="dried-fruits">Dried Fruits</option>
                             <option value="spices-herbs">Spices & Herbs</option>
-                            <option value="flours-meals">Flours & Meals</option>
-                            <option value="sweeteners">Sweeteners</option>
-                            <option value="beverages">Beverages</option>
+                            <option value="fruits-vegetables">Fruits & Vegetables</option>
+                            <option value="fertilizer">Fertilizer</option>
+                            <option value="hides-skins">Hides & Skins</option>
+                            <option value="sisal-fiber">Sisal Fiber</option>
                             <option value="other">Other / Not Sure</option>
                           </select>
                         </div>
