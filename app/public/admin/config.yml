@@ -213,7 +213,7 @@ collections:
           - label: "WhatsApp Number"
             name: "whatsappNumber"
             widget: "string"
-            hint: "Include country code, no spaces or plus sign (e.g. 254736716020)"
+            hint: "Include country code, no spaces or plus sign (e.g. 254700000000)"
           - label: "Business Hours"
             name: "businessHours"
             widget: "string"

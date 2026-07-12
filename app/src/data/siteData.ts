@@ -144,7 +144,7 @@ export const companyInfo = {
   tagline: 'Your Trusted Manufacturer & Sourcing Partner in East Africa',
   description: 'SHAMBAMALL is a premium agricultural trading company based in Nairobi, Kenya. We specialize in sourcing, processing, and exporting high-quality agricultural products to clients worldwide.',
   address: 'L.R. No. 330/210, Mombasa Road, Nairobi, Kenya',
-  phone: '+254 736 716 020',
+  phone: '+254 700 000 000',
   email: 'info@shambamall.com',
   whatsappNumber: '254700000000',
   social: {

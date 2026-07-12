@@ -82,7 +82,7 @@ id, productName, slug, category, subCategory, description, fullDescription, pric
 - **Requires manual setup**: Enable Netlify Identity and Git Gateway in the Netlify dashboard before `/admin` will accept logins. This is a one-time dashboard step, not configurable from code.
 
 ### WhatsApp Integration — Wired
-- Business number: `254736716020` (confirmed in `src/data/siteData.ts`)
+- Business number: `254700000000` (confirmed in `src/data/siteData.ts`)
 - Used consistently across all product cards and the contact page via `src/lib/whatsapp.ts`
 - Consider adding WhatsApp Business API for automated responses in the future
 
