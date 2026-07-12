@@ -146,7 +146,7 @@ export const companyInfo = {
   address: 'L.R. No. 330/210, Mombasa Road, Nairobi, Kenya',
   phone: '+254 736 716 020',
   email: 'info@shambamall.com',
-  whatsappNumber: '254736716020',
+  whatsappNumber: '254700000000',
   social: {
     facebook: '#',
     instagram: '#',
