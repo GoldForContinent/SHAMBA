@@ -103,7 +103,7 @@ export default function Assortment() {
                   </p>
                 </div>
                 <Link
-                  to="/private-label"
+                  to="/assortment/private-label"
                   className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#C79A3E] text-white font-ui font-semibold rounded-lg hover:bg-[#B38A35] transition-colors shadow-lift flex-shrink-0"
                 >
                   Learn More

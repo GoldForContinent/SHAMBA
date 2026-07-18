@@ -9,6 +9,7 @@ import Shop from '@/pages/Shop';
 import ProductDetail from '@/pages/ProductDetail';
 import WhatWeDo from '@/pages/WhatWeDo';
 import Quality from '@/pages/Quality';
+import Services from '@/pages/Services';
 import PrivateLabel from '@/pages/PrivateLabel';
 import FoodIngredients from '@/pages/FoodIngredients';
 import Contact from '@/pages/Contact';
@@ -22,12 +23,13 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/assortment" element={<Assortment />} />
+          <Route path="/assortment/food-ingredients" element={<FoodIngredients />} />
+          <Route path="/assortment/private-label" element={<PrivateLabel />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/:slug" element={<ProductDetail />} />
           <Route path="/what-we-do" element={<WhatWeDo />} />
           <Route path="/quality" element={<Quality />} />
-          <Route path="/private-label" element={<PrivateLabel />} />
-          <Route path="/food-ingredients" element={<FoodIngredients />} />
+          <Route path="/quality/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>

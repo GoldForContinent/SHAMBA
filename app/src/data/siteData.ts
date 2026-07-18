@@ -2,12 +2,24 @@ import type { NavLink, WhyChooseUsItem, CoreValue, StatItem, StatCard, QualitySt
 
 export const navLinks: NavLink[] = [
   { label: 'Home', href: '/' },
-  { label: 'Assortment', href: '/assortment' },
+  {
+    label: 'Assortment',
+    href: '/assortment',
+    children: [
+      { label: 'Food Ingredients', href: '/assortment/food-ingredients' },
+      { label: 'Private Label', href: '/assortment/private-label' },
+    ],
+  },
   { label: 'Shop', href: '/shop' },
   { label: 'What We Do', href: '/what-we-do' },
-  { label: 'Quality', href: '/quality' },
-  { label: 'Private Label', href: '/private-label' },
-  { label: 'Food Ingredients', href: '/food-ingredients' },
+  {
+    label: 'Quality',
+    href: '/quality',
+    children: [
+      { label: 'Services', href: '/quality/services' },
+      { label: 'Our Quality', href: '/quality' },
+    ],
+  },
   { label: 'Contact', href: '/contact' },
 ];
 
