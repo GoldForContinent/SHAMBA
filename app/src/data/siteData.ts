@@ -1,4 +1,4 @@
-import type { NavLink, WhyChooseUsItem, CoreValue, StatItem, QualityStandard, SupplyChainStep } from '@/types';
+import type { NavLink, WhyChooseUsItem, CoreValue, StatItem, StatCard, QualityStandard, SupplyChainStep, ServiceCard, CommitmentStep } from '@/types';
 
 export const navLinks: NavLink[] = [
   { label: 'Home', href: '/' },
@@ -6,38 +6,40 @@ export const navLinks: NavLink[] = [
   { label: 'Shop', href: '/shop' },
   { label: 'What We Do', href: '/what-we-do' },
   { label: 'Quality', href: '/quality' },
+  { label: 'Private Label', href: '/private-label' },
+  { label: 'Food Ingredients', href: '/food-ingredients' },
   { label: 'Contact', href: '/contact' },
 ];
 
 export const whyChooseUsItems: WhyChooseUsItem[] = [
   {
     id: 1,
-    title: 'Reliable Suppliers',
-    description: 'We partner with vetted, certified producers who have demonstrated consistent quality and reliability over years of collaboration.',
+    title: 'Vetted Supplier Network',
+    description: 'Every supplier in our network is assessed for financial stability, production capacity, and consistency before we bring them into the fold — so what you order is what you can depend on, shipment after shipment.',
     icon: 'Shield',
   },
   {
     id: 2,
-    title: 'Full Compliance',
-    description: 'All products meet international standards including ISO, HACCP, Organic, and Fair Trade certifications as applicable.',
+    title: 'Ethical & Compliant Sourcing',
+    description: 'We hold every partner to clear standards on labor practices and factory conditions, because a supply chain you can stand behind matters as much as the product itself.',
     icon: 'CheckCircle',
   },
   {
     id: 3,
-    title: 'Timely Delivery',
-    description: 'We understand the importance of supply chain reliability. Our logistics network ensures on-time delivery to any global destination.',
+    title: 'On-Time, Every Time',
+    description: 'Agricultural sourcing lives and dies on timelines. We plan shipments with buffer, communicate early on any risk, and treat your deadline as our deadline.',
     icon: 'Clock',
   },
   {
     id: 4,
-    title: 'Best Price',
-    description: 'Direct relationships with producers eliminate unnecessary intermediaries, allowing us to offer competitive pricing without compromising quality.',
+    title: 'Pricing That Respects Your Margins',
+    description: 'Direct relationships with growers and processors mean fewer middlemen between the farm and your invoice — and better pricing passed straight to you.',
     icon: 'Tag',
   },
   {
     id: 5,
-    title: 'Constant Updates',
-    description: 'Stay informed with real-time order tracking, market insights, and proactive communication throughout your buying journey.',
+    title: "You're Never in the Dark",
+    description: 'From order confirmation to delivery, we proactively update you at every stage — no chasing us for status, no surprises at the port.',
     icon: 'RefreshCw',
   },
 ];
@@ -49,26 +51,53 @@ export const stats: StatItem[] = [
   { id: 4, value: '9', label: 'Product Categories', suffix: '' },
 ];
 
+export const statCards: StatCard[] = [
+  {
+    id: 1,
+    title: 'East Africa Rooted',
+    subtitle: 'Deep local sourcing relationships',
+    icon: 'MapPin',
+  },
+  {
+    id: 2,
+    title: '9 Product Categories',
+    subtitle: 'From oils to beverages, one trusted supplier',
+    icon: 'Layers',
+  },
+  {
+    id: 3,
+    title: 'Direct Farmer Ties',
+    subtitle: 'Fewer intermediaries, fresher supply',
+    icon: 'Users',
+  },
+  {
+    id: 4,
+    title: 'Full Traceability',
+    subtitle: 'Know exactly where your order came from',
+    icon: 'GitBranch',
+  },
+];
+
 export const coreValues: CoreValue[] = [
   {
     id: 1,
-    title: 'Involved',
-    subtitle: 'Deeply Engaged',
-    description: 'We are personally involved at every stage — from farm visits and supplier audits to packaging oversight and shipping coordination. Your success is our success.',
+    title: 'Partnership',
+    subtitle: 'Built to Last',
+    description: 'We see every client relationship as a long-term partnership, not a single transaction. That means fair terms, honest communication, and showing up consistently — from your first small order to your hundredth.',
     icon: 'Users',
   },
   {
     id: 2,
-    title: 'Improve',
-    subtitle: 'Continuously Better',
-    description: 'We constantly seek ways to improve our processes, products, and partnerships. Feedback drives innovation, and we embrace change as a path to excellence.',
+    title: 'Progress',
+    subtitle: 'Moving Agriculture Forward',
+    description: 'Agriculture in East Africa is changing fast, and we want to be part of that change — helping farmers adopt better practices while helping buyers access more consistent, better-documented supply.',
     icon: 'TrendingUp',
   },
   {
     id: 3,
-    title: '100%',
+    title: 'Full Commitment',
     subtitle: 'All In, Always',
-    description: 'We give 100% to every order, every relationship, and every challenge. No shortcuts, no compromises — just full commitment to delivering excellence.',
+    description: "When we take on a client, we take on their standards as our own. Quality isn't a checkbox for us — it's the reason repeat clients keep coming back.",
     icon: 'Award',
   },
 ];
@@ -136,6 +165,75 @@ export const supplyChainSteps: SupplyChainStep[] = [
     title: 'Global Delivery',
     description: 'Seamless logistics management with proper documentation, customs clearance, and on-time delivery.',
     icon: 'Globe',
+  },
+];
+
+export const serviceCards: ServiceCard[] = [
+  {
+    id: 1,
+    title: 'Sourcing & Product Development',
+    items: [
+      'Sample development: We produce and share samples matched to your specifications before any bulk order is confirmed.',
+      'Cost-conscious sourcing: Our supplier relationships let us hold competitive pricing without compromising on standards.',
+      'Supplier vetting: Every new supplier goes through a capacity and compliance review before we work with them.',
+    ],
+    icon: 'Search',
+  },
+  {
+    id: 2,
+    title: 'Quality Verification',
+    items: [
+      'In-house checks: Our team inspects product at multiple stages, not just before shipment.',
+      'Independent verification: Where needed, we bring in third-party auditors to confirm compliance with international standards.',
+    ],
+    icon: 'ShieldCheck',
+  },
+  {
+    id: 3,
+    title: 'Production Coordination',
+    items: [
+      'Client-factory liaison: We manage communication between you and the production side, so nothing gets lost in translation.',
+      'Pre-shipment sign-off: Every batch is reviewed against agreed specs before it moves.',
+      'Multi-stage inspection: We catch issues early, before they become your problem.',
+    ],
+    icon: 'ClipboardCheck',
+  },
+  {
+    id: 4,
+    title: 'Logistics & Delivery',
+    items: [
+      'Documentation handled: Export paperwork, compliance filings, and customs clearance are managed on our end.',
+      'Reliable transport: Domestic and cross-border delivery planned for cost and reliability, not just speed.',
+      'Storage & packaging: Flexible warehousing and packaging options to fit how you receive goods.',
+    ],
+    icon: 'Truck',
+  },
+];
+
+export const commitmentSteps: CommitmentStep[] = [
+  {
+    id: 1,
+    title: 'Integrity First',
+    description: "We build relationships meant to last years, not single transactions — which means transparency even when it's inconvenient.",
+    icon: 'Heart',
+  },
+  {
+    id: 2,
+    title: 'Fair, Competitive Pricing',
+    description: 'Lean sourcing operations mean we can offer strong value without cutting corners on standards.',
+    icon: 'DollarSign',
+  },
+  {
+    id: 3,
+    title: 'Breadth Without Compromise',
+    description: 'A wide product range doesn\'t mean lower quality on any single item — every category gets the same scrutiny.',
+    icon: 'Grid',
+  },
+  {
+    id: 4,
+    title: "Standards That Don't Slip",
+    description: "From the first sample to the final shipment, we hold the line on quality — because that's what earns repeat business.",
+    icon: 'CheckCircle',
   },
 ];
 

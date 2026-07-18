@@ -57,6 +57,27 @@ export interface StatItem {
   suffix?: string;
 }
 
+export interface StatCard {
+  id: number;
+  title: string;
+  subtitle: string;
+  icon: string;
+}
+
+export interface ServiceCard {
+  id: number;
+  title: string;
+  items: string[];
+  icon: string;
+}
+
+export interface CommitmentStep {
+  id: number;
+  title: string;
+  description: string;
+  icon: string;
+}
+
 export interface ContactFormData {
   fullName: string;
   email: string;

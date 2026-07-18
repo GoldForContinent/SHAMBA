@@ -1,15 +1,29 @@
-import { FiFileText, FiShield, FiCheckCircle, FiHeart, FiSun, FiGitBranch } from 'react-icons/fi';
+import { FiFileText, FiShield, FiCheckCircle, FiHeart, FiSearch, FiClipboard, FiTruck, FiSun, FiGitBranch } from 'react-icons/fi';
 import ScrollReveal from '@/components/ui-custom/ScrollReveal';
 import StaggerContainer, { StaggerItem } from '@/components/ui-custom/StaggerContainer';
-import { qualityStandards } from '@/data/siteData';
+import { qualityStandards, serviceCards, commitmentSteps } from '@/data/siteData';
 
-const iconMap: Record<string, React.ElementType> = {
+const standardIconMap: Record<string, React.ElementType> = {
   FileCheck: FiFileText,
   ShieldCheck: FiShield,
   Leaf: FiCheckCircle,
   HeartHandshake: FiHeart,
   Microscope: FiSun,
   GitBranch: FiGitBranch,
+};
+
+const serviceIconMap: Record<string, React.ElementType> = {
+  Search: FiSearch,
+  ShieldCheck: FiShield,
+  ClipboardCheck: FiClipboard,
+  Truck: FiTruck,
+};
+
+const commitmentIconMap: Record<string, React.ElementType> = {
+  Heart: FiHeart,
+  DollarSign: FiFileText,
+  Grid: FiCheckCircle,
+  CheckCircle: FiCheckCircle,
 };
 
 export default function Quality() {
@@ -30,12 +44,121 @@ export default function Quality() {
               Our Promise
             </span>
             <h1 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-white mt-2 mb-4">
-              Quality Assurance
+              Our Quality
             </h1>
             <p className="font-body text-base sm:text-lg text-white/80 max-w-3xl">
-              Quality is not an afterthought — it is the foundation of everything we do. From supplier selection to final delivery, every step is governed by rigorous standards and verified through independent testing.
+              Quality isn&apos;t something we check for once and forget — it&apos;s built into every stage of how we source, handle, and ship. Here&apos;s exactly how we make sure what reaches you meets the standard we promised.
             </p>
           </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Services Grid — 4 cards with asymmetric layout */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-[#F8F6F2]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal className="mb-10 sm:mb-12">
+            <span className="text-[#C79A3E] text-sm font-ui font-semibold uppercase tracking-wider">
+              What We Do
+            </span>
+            <h2 className="font-heading font-bold text-2xl sm:text-3xl text-text-primary mt-2 mb-4">
+              Our Services
+            </h2>
+          </ScrollReveal>
+
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {serviceCards.map((service) => {
+              const Icon = serviceIconMap[service.icon] || FiSearch;
+              return (
+                <StaggerItem key={service.id}>
+                  <div className="bg-white rounded-xl p-6 sm:p-8 shadow-card border border-[#1F4A3E]/[0.04] hover:shadow-lift transition-all duration-300 group h-full">
+                    <div className="flex items-start gap-4 mb-5">
+                      <div className="w-12 h-12 bg-[#1F4A3E]/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-[#1F4A3E] transition-colors duration-300">
+                        <Icon size={22} className="text-[#1F4A3E] group-hover:text-white transition-colors duration-300" />
+                      </div>
+                      <h3 className="font-heading font-semibold text-lg text-text-primary pt-2">
+                        {service.title}
+                      </h3>
+                    </div>
+                    <ul className="space-y-3 ml-16">
+                      {service.items.map((item, idx) => (
+                        <li key={idx} className="font-body text-sm text-text-secondary leading-relaxed flex items-start gap-2">
+                          <span className="w-1.5 h-1.5 bg-[#C79A3E] rounded-full mt-2 flex-shrink-0" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </StaggerItem>
+              );
+            })}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Our Commitment — 4-step horizontal timeline */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal className="text-center mb-10 sm:mb-12">
+            <span className="text-[#C79A3E] text-sm font-ui font-semibold uppercase tracking-wider">
+              Our Commitment
+            </span>
+            <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-text-primary mt-2">
+              What Sets Us Apart
+            </h2>
+          </ScrollReveal>
+
+          {/* Desktop horizontal timeline */}
+          <div className="hidden lg:block relative">
+            <div className="absolute top-8 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-[#1F4A3E]/20 via-[#C79A3E]/40 to-[#1F4A3E]/20" />
+            <div className="grid grid-cols-4 gap-6 relative">
+              {commitmentSteps.map((step, index) => {
+                const Icon = commitmentIconMap[step.icon] || FiCheckCircle;
+                return (
+                  <div key={step.id} className="relative text-center">
+                    <div className="relative z-10 mx-auto mb-5">
+                      <div className="w-16 h-16 bg-white border-2 border-[#C79A3E] rounded-full flex items-center justify-center mx-auto shadow-card">
+                        <Icon size={24} className="text-[#C79A3E]" />
+                      </div>
+                      <span className="absolute -top-2 -right-2 w-7 h-7 bg-[#1F4A3E] rounded-full flex items-center justify-center text-white text-xs font-heading font-bold shadow-soft">
+                        {index + 1}
+                      </span>
+                    </div>
+                    <h3 className="font-heading font-semibold text-lg text-text-primary mb-2">
+                      {step.title}
+                    </h3>
+                    <p className="font-body text-sm text-text-secondary leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Mobile stack */}
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:hidden">
+            {commitmentSteps.map((step, index) => {
+              const Icon = commitmentIconMap[step.icon] || FiCheckCircle;
+              return (
+                <StaggerItem key={step.id}>
+                  <div className="relative text-center">
+                    <div className="w-16 h-16 bg-[#C79A3E] rounded-full flex items-center justify-center mx-auto mb-5 relative z-10 shadow-soft">
+                      <span className="absolute -top-1 -right-1 w-6 h-6 bg-[#1F4A3E] rounded-full flex items-center justify-center text-white text-xs font-heading font-bold">
+                        {index + 1}
+                      </span>
+                      <Icon size={24} className="text-white" />
+                    </div>
+                    <h3 className="font-heading font-semibold text-lg text-text-primary mb-2">
+                      {step.title}
+                    </h3>
+                    <p className="font-body text-sm text-text-secondary leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
+                </StaggerItem>
+              );
+            })}
+          </StaggerContainer>
         </div>
       </section>
 
@@ -45,20 +168,14 @@ export default function Quality() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <ScrollReveal>
               <span className="text-[#C79A3E] text-sm font-ui font-semibold uppercase tracking-wider">
-                Our Team
+                Our People
               </span>
               <h2 className="font-heading font-bold text-2xl sm:text-3xl text-text-primary mt-2 mb-4">
-                Dedicated Quality Professionals
+                The Quality Team Behind Your Supply
               </h2>
               <div className="space-y-4 font-body text-text-secondary leading-relaxed">
                 <p>
-                  Our quality assurance team comprises experienced food technologists, agricultural specialists, and certified auditors who oversee every aspect of product quality. With decades of combined experience in agricultural commodity inspection, our team is equipped to identify, verify, and guarantee the highest standards.
-                </p>
-                <p>
-                  We maintain a zero-compromise policy on quality. Every batch undergoes multi-point inspection — from origin verification and sensory evaluation to laboratory analysis for contaminants, moisture content, and nutritional parameters. Products that do not meet our standards are rejected at source, ensuring that only the finest reach our clients.
-                </p>
-                <p>
-                  Our team also works proactively with suppliers to improve their practices, providing guidance on post-harvest handling, storage, and processing techniques. This collaborative approach elevates quality across our entire supply network.
+                  Our quality team is made up of trained food and agricultural specialists who stay current with regional and international food safety standards. They work closely with our supplier network — not from a desk, but through regular site engagement — so quality checks reflect real production conditions, not paperwork alone.
                 </p>
               </div>
             </ScrollReveal>
@@ -87,17 +204,14 @@ export default function Quality() {
             <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-text-primary mt-2 mb-4">
               Our Quality Standards
             </h2>
-            <p className="font-body text-text-secondary max-w-2xl mx-auto">
-              We adhere to internationally recognized standards and hold certifications that demonstrate our commitment to quality, safety, and ethical practices.
-            </p>
           </ScrollReveal>
 
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {qualityStandards.map((standard) => {
-              const Icon = iconMap[standard.icon] || FiFileText;
+              const Icon = standardIconMap[standard.icon] || FiFileText;
               return (
                 <StaggerItem key={standard.id}>
-                  <div className="bg-[#F8F6F2] rounded-xl p-6 sm:p-8 hover:shadow-lift transition-all duration-300 group h-full">
+                  <div className="bg-[#F8F6F2] rounded-xl p-6 sm:p-8 hover:shadow-lift transition-all duration-300 group h-full border border-[#1F4A3E]/[0.04]">
                     <div className="w-12 h-12 bg-[#1F4A3E]/10 rounded-lg flex items-center justify-center mb-5 group-hover:bg-[#1F4A3E] transition-colors duration-300">
                       <Icon size={22} className="text-[#1F4A3E] group-hover:text-white transition-colors duration-300" />
                     </div>
@@ -115,32 +229,42 @@ export default function Quality() {
         </div>
       </section>
 
-      {/* Standards Response */}
+      {/* Quality Standards & Response */}
       <section className="py-12 sm:py-16 lg:py-20 bg-[#F8F6F2]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal className="max-w-3xl mx-auto">
-            <span className="text-[#C79A3E] text-sm font-ui font-semibold uppercase tracking-wider">
-              Client-Centric Approach
-            </span>
-            <h2 className="font-heading font-bold text-2xl sm:text-3xl text-text-primary mt-2 mb-6">
-              Standards Response
-            </h2>
-            <div className="space-y-5 font-body text-text-secondary leading-relaxed">
-              <p>
-                We understand that different markets and clients have unique quality requirements. Our quality management system is designed to be responsive and adaptive — capable of meeting specific client standards, regional regulations, and industry certifications.
-              </p>
-              <p>
-                Upon receiving your inquiry, our quality team reviews your specifications and confirms our ability to meet them. Where additional testing, documentation, or process modifications are required, we outline these clearly and implement them seamlessly into our workflow.
-              </p>
-              <p>
-                We provide comprehensive documentation with every shipment, including certificates of analysis, origin certificates, phytosanitary certificates, and any client-specific documentation. Our transparency ensures you have complete confidence in the products you receive.
-              </p>
-            </div>
-          </ScrollReveal>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+            <ScrollReveal>
+              <div className="bg-white rounded-xl p-6 sm:p-8 shadow-card border border-[#1F4A3E]/[0.04] h-full">
+                <span className="text-[#C79A3E] text-sm font-ui font-semibold uppercase tracking-wider">
+                  Our Goal
+                </span>
+                <h2 className="font-heading font-bold text-xl sm:text-2xl text-text-primary mt-2 mb-4">
+                  Quality Standards
+                </h2>
+                <p className="font-body text-sm text-text-secondary leading-relaxed">
+                  We aim to give every client a dependable supply of high-quality product that&apos;s fit for its intended use and compliant with relevant food safety requirements. That standard applies whether the order is 50kg or 5 tonnes.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.15}>
+              <div className="bg-white rounded-xl p-6 sm:p-8 shadow-card border border-[#1F4A3E]/[0.04] h-full">
+                <span className="text-[#C79A3E] text-sm font-ui font-semibold uppercase tracking-wider">
+                  Client-Centric
+                </span>
+                <h2 className="font-heading font-bold text-xl sm:text-2xl text-text-primary mt-2 mb-4">
+                  Standard Quality Response
+                </h2>
+                <p className="font-body text-sm text-text-secondary leading-relaxed">
+                  We treat every client questionnaire and compliance request as a genuine part of building trust — not paperwork to rush through. Clear answers now save both sides problems later.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
-      {/* General Statement */}
+      {/* General Quality Statement */}
       <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -157,22 +281,29 @@ export default function Quality() {
 
             <ScrollReveal delay={0.15}>
               <span className="text-[#C79A3E] text-sm font-ui font-semibold uppercase tracking-wider">
-                Our Commitment
+                General Quality Statement
               </span>
               <h2 className="font-heading font-bold text-2xl sm:text-3xl text-text-primary mt-2 mb-4">
-                General Quality Statement
+                All Our Products Are
               </h2>
-              <div className="space-y-4 font-body text-text-secondary leading-relaxed">
-                <p>
-                  SHAMBAMALL is committed to providing agricultural products of the highest quality that meet or exceed customer expectations and regulatory requirements. Our quality management system encompasses all aspects of our operations — from supplier qualification and product sourcing to processing, packaging, storage, and delivery.
-                </p>
-                <p>
-                  We continuously invest in our quality infrastructure, including laboratory equipment, staff training, and process improvements. Regular internal and external audits ensure our systems remain effective and aligned with international best practices.
-                </p>
-                <p>
-                  Customer feedback is integral to our quality improvement cycle. We actively solicit and respond to client input, using it to drive enhancements in our products, services, and processes. Your satisfaction is the ultimate measure of our quality success.
-                </p>
-              </div>
+              <ul className="space-y-3 font-body text-text-secondary leading-relaxed">
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 bg-[#C79A3E] rounded-full mt-2.5 flex-shrink-0" />
+                  Sourced with full traceability back to origin
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 bg-[#C79A3E] rounded-full mt-2.5 flex-shrink-0" />
+                  Handled in line with applicable food safety regulations
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 bg-[#C79A3E] rounded-full mt-2.5 flex-shrink-0" />
+                  Free from irradiation
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 bg-[#C79A3E] rounded-full mt-2.5 flex-shrink-0" />
+                  Non-GMO
+                </li>
+              </ul>
             </ScrollReveal>
           </div>
         </div>
@@ -184,10 +315,10 @@ export default function Quality() {
           <ScrollReveal>
             <div className="bg-white rounded-xl p-6 sm:p-8 border border-[#1F4A3E]/10">
               <h3 className="font-heading font-semibold text-lg text-text-primary mb-3">
-                Disclaimer
+                Important Notice
               </h3>
               <p className="font-body text-sm text-text-secondary leading-relaxed">
-                While every effort is made to ensure the accuracy of product information, specifications, and certifications on this website, SHAMBAMALL reserves the right to modify product details without prior notice. All product descriptions, certifications, and quality claims are subject to verification against actual shipment documentation. For the most current product specifications, certification status, and availability, please contact our team directly. Product images are representative and may not reflect the exact appearance of shipped goods.
+                Information on this site reflects our current knowledge and practices and may be updated as our processes evolve. If any product is intended for vulnerable consumer groups — including individuals with allergies, infants, elderly consumers, or immunocompromised individuals — please note our products are not marketed as specifically suitable for these groups, and suitability should be independently confirmed for each batch. We&apos;re happy to assist with that assessment on request.
               </p>
             </div>
           </ScrollReveal>

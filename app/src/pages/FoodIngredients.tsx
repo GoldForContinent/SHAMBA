@@ -4,14 +4,14 @@ import ScrollReveal from '@/components/ui-custom/ScrollReveal';
 import StaggerContainer, { StaggerItem } from '@/components/ui-custom/StaggerContainer';
 import { categories } from '@/data/products';
 
-export default function Assortment() {
+export default function FoodIngredients() {
   return (
     <div className="pt-16 sm:pt-20">
       {/* Page Header */}
       <section className="bg-[#1F4A3E] py-12 sm:py-16 lg:py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <img
-            src="https://images.unsplash.com/photo-1595855759920-86582396756a?w=1920&h=400&fit=crop"
+            src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=1920&h=400&fit=crop"
             alt=""
             className="w-full h-full object-cover"
           />
@@ -19,19 +19,19 @@ export default function Assortment() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <ScrollReveal>
             <span className="text-[#C79A3E] text-sm font-ui font-semibold uppercase tracking-wider">
-              What We Supply
+              Browse Our Range
             </span>
             <h1 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-white mt-2 mb-4">
-              Our Assortment
+              Food Ingredients
             </h1>
-            <p className="font-body text-base sm:text-lg text-white/80 max-w-2xl">
-              Explore what we source and supply — from raw agricultural ingredients to full private-label packaging support.
+            <p className="font-body text-base sm:text-lg text-white/80 max-w-3xl">
+              Browse our core ingredient categories below — each backed by vetted sourcing and full traceability.
             </p>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Categories Grid */}
+      {/* Category Grid — Reuses existing category tiles */}
       <section className="py-12 sm:py-16 lg:py-20 bg-[#F8F6F2]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -78,39 +78,23 @@ export default function Assortment() {
         </div>
       </section>
 
-      {/* Private Label Banner */}
+      {/* CTA */}
       <section className="py-12 sm:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollReveal>
-            <div className="relative bg-[#1F4A3E] rounded-2xl overflow-hidden">
-              <div className="absolute inset-0 opacity-20">
-                <img
-                  src="https://images.unsplash.com/photo-1584652868574-0669f4292976?w=1200&h=400&fit=crop"
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="relative z-10 px-6 sm:px-10 lg:px-16 py-10 sm:py-14 lg:py-16 flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-10">
-                <div className="flex-1">
-                  <span className="inline-block px-3 py-1 bg-[#C79A3E]/20 border border-[#C79A3E]/30 rounded-full text-[#C79A3E] text-xs font-ui font-semibold uppercase tracking-wider mb-4">
-                    Private Label Services
-                  </span>
-                  <h2 className="font-heading font-bold text-2xl sm:text-3xl text-white mb-3">
-                    Build Your Own Brand on Our Supply Chain
-                  </h2>
-                  <p className="font-body text-white/80 max-w-xl">
-                    We pack, blend, and prepare high-quality agricultural ingredients under your brand. Need help figuring out the right mix or format? We&apos;ll work through it with you.
-                  </p>
-                </div>
-                <Link
-                  to="/private-label"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#C79A3E] text-white font-ui font-semibold rounded-lg hover:bg-[#B38A35] transition-colors shadow-lift flex-shrink-0"
-                >
-                  Learn More
-                  <FiArrowRight size={18} />
-                </Link>
-              </div>
-            </div>
+            <h2 className="font-heading font-bold text-2xl sm:text-3xl text-text-primary mb-4">
+              Looking for Something Specific?
+            </h2>
+            <p className="font-body text-base text-text-secondary mb-8 max-w-2xl mx-auto">
+              If you need a product not listed above, our sourcing team can locate and qualify suppliers to meet your specific requirements.
+            </p>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#1F4A3E] text-white font-ui font-semibold rounded-lg hover:bg-[#16382F] transition-colors shadow-lift"
+            >
+              Get in Touch
+              <FiArrowRight size={18} />
+            </Link>
           </ScrollReveal>
         </div>
       </section>

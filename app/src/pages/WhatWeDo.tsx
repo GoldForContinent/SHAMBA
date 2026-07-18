@@ -32,38 +32,32 @@ export default function WhatWeDo() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <ScrollReveal>
             <span className="text-[#C79A3E] text-sm font-ui font-semibold uppercase tracking-wider">
-              About Us
+              Our Role
             </span>
             <h1 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-white mt-2 mb-4">
               What We Do
             </h1>
             <p className="font-body text-base sm:text-lg text-white/80 max-w-3xl">
-              We are more than a trading company — we are your end-to-end partner in sourcing premium agricultural products from East Africa.
+              SHAMBAMALL connects East African farms and processors to buyers who need reliable, well-documented agricultural supply — restaurants, supermarkets, food processors, and exporters alike. We handle sourcing, quality checks, and logistics so you don&apos;t have to manage a dozen separate supplier relationships to fill one order.
             </p>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Mission Statement */}
+      {/* Supply Partner Section */}
       <section className="py-12 sm:py-16 lg:py-20 bg-[#F8F6F2]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <ScrollReveal>
               <span className="text-[#C79A3E] text-sm font-ui font-semibold uppercase tracking-wider">
-                Our Mission
+                How We Work
               </span>
               <h2 className="font-heading font-bold text-2xl sm:text-3xl text-text-primary mt-2 mb-4">
-                Connecting East African Farmers to the World
+                A Supply Partner, Not Just a Supplier
               </h2>
               <div className="space-y-4 font-body text-text-secondary leading-relaxed">
                 <p>
-                  SHAMBAMALL was founded with a clear purpose: to bridge the gap between East Africa&apos;s exceptional agricultural producers and discerning buyers worldwide. We believe that the region&apos;s fertile soils, ideal climate, and rich farming heritage produce some of the world&apos;s finest agricultural products — and we are here to bring them to your doorstep.
-                </p>
-                <p>
-                  Our mission extends beyond trade. We are committed to building sustainable, ethical supply chains that benefit farming communities while delivering uncompromising quality to our clients. Every product we handle represents our commitment to excellence, transparency, and fair partnership.
-                </p>
-                <p>
-                  Whether you are a supermarket chain seeking reliable supply, a restaurant group looking for premium ingredients, or an exporter building your product line — we provide the expertise, infrastructure, and dedication to make your sourcing journey seamless and successful.
+                  We work across the full chain — from identifying the right growers and processors for a given product, through quality verification, to getting goods to your door. Our role is to remove the coordination burden from your side of the transaction, while holding every step to a standard we&apos;d be comfortable putting our name on.
                 </p>
               </div>
             </ScrollReveal>
@@ -78,9 +72,9 @@ export default function WhatWeDo() {
                     loading="lazy"
                   />
                 </div>
-                <div className="absolute -bottom-6 -left-6 bg-white rounded-xl p-5 shadow-card max-w-[200px]">
-                  <p className="font-heading font-bold text-3xl text-[#1F4A3E]">30+</p>
-                  <p className="font-ui text-sm text-text-secondary">Years of Combined Experience</p>
+                <div className="absolute -bottom-6 -left-6 bg-white rounded-xl p-5 shadow-card max-w-[200px] border border-[#1F4A3E]/[0.06]">
+                  <p className="font-heading font-bold text-3xl text-[#1F4A3E]">9</p>
+                  <p className="font-ui text-sm text-text-secondary">Core Product Categories</p>
                 </div>
               </div>
             </ScrollReveal>
@@ -88,50 +82,75 @@ export default function WhatWeDo() {
         </div>
       </section>
 
-      {/* Supply Chain */}
+      {/* Supply Chain — Connected Timeline */}
       <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal className="text-center mb-12 sm:mb-16">
             <span className="text-[#C79A3E] text-sm font-ui font-semibold uppercase tracking-wider">
-              How We Work
+              Our Process
             </span>
             <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-text-primary mt-2 mb-4">
-              Our Supply Chain
+              From Source to Your Door
             </h2>
             <p className="font-body text-text-secondary max-w-2xl mx-auto">
               A streamlined, transparent process that ensures quality at every step — from farm to your facility.
             </p>
           </ScrollReveal>
 
-          {/* Steps */}
-          <div className="relative">
-            {/* Connecting Line - Desktop */}
-            <div className="hidden lg:block absolute top-16 left-[12.5%] right-[12.5%] h-0.5 bg-[#1F4A3E]/15" />
+          {/* Horizontal Connected Timeline — Desktop */}
+          <div className="hidden lg:block relative mb-8">
+            {/* Connecting line */}
+            <div className="absolute top-8 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-[#1F4A3E]/20 via-[#C79A3E]/40 to-[#1F4A3E]/20" />
 
-            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+            <div className="grid grid-cols-4 gap-6 relative">
               {supplyChainSteps.map((step, index) => {
                 const Icon = stepIconMap[step.icon] || FiSearch;
                 return (
-                  <StaggerItem key={step.id}>
-                    <div className="relative text-center">
-                      <div className="w-16 h-16 bg-[#1F4A3E] rounded-full flex items-center justify-center mx-auto mb-5 relative z-10 shadow-soft">
-                        <span className="absolute -top-1 -right-1 w-6 h-6 bg-[#C79A3E] rounded-full flex items-center justify-center text-white text-xs font-heading font-bold">
-                          {index + 1}
-                        </span>
-                        <Icon size={24} className="text-white" />
+                  <div key={step.id} className="relative text-center">
+                    <div className="relative z-10 mx-auto mb-5">
+                      <div className="w-16 h-16 bg-white border-2 border-[#1F4A3E] rounded-full flex items-center justify-center mx-auto shadow-card hover:bg-[#1F4A3E] transition-colors duration-300 group">
+                        <Icon size={24} className="text-[#1F4A3E] group-hover:text-white transition-colors duration-300" />
                       </div>
-                      <h3 className="font-heading font-semibold text-lg text-text-primary mb-2">
-                        {step.title}
-                      </h3>
-                      <p className="font-body text-sm text-text-secondary leading-relaxed">
-                        {step.description}
-                      </p>
+                      <span className="absolute -top-2 -right-2 w-7 h-7 bg-[#C79A3E] rounded-full flex items-center justify-center text-white text-xs font-heading font-bold shadow-soft">
+                        {index + 1}
+                      </span>
                     </div>
-                  </StaggerItem>
+                    <h3 className="font-heading font-semibold text-lg text-text-primary mb-2">
+                      {step.title}
+                    </h3>
+                    <p className="font-body text-sm text-text-secondary leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
                 );
               })}
-            </StaggerContainer>
+            </div>
           </div>
+
+          {/* Mobile Stack */}
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:hidden">
+            {supplyChainSteps.map((step, index) => {
+              const Icon = stepIconMap[step.icon] || FiSearch;
+              return (
+                <StaggerItem key={step.id}>
+                  <div className="relative text-center">
+                    <div className="w-16 h-16 bg-[#1F4A3E] rounded-full flex items-center justify-center mx-auto mb-5 relative z-10 shadow-soft">
+                      <span className="absolute -top-1 -right-1 w-6 h-6 bg-[#C79A3E] rounded-full flex items-center justify-center text-white text-xs font-heading font-bold">
+                        {index + 1}
+                      </span>
+                      <Icon size={24} className="text-white" />
+                    </div>
+                    <h3 className="font-heading font-semibold text-lg text-text-primary mb-2">
+                      {step.title}
+                    </h3>
+                    <p className="font-body text-sm text-text-secondary leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
+                </StaggerItem>
+              );
+            })}
+          </StaggerContainer>
         </div>
       </section>
 
@@ -152,20 +171,14 @@ export default function WhatWeDo() {
 
             <ScrollReveal delay={0.15}>
               <span className="text-[#C79A3E] text-sm font-ui font-semibold uppercase tracking-wider">
-                What We Offer
+                What&apos;s in Our Portfolio
               </span>
               <h2 className="font-heading font-bold text-2xl sm:text-3xl text-text-primary mt-2 mb-4">
-                Comprehensive Product Portfolio
+                Nine Core Categories
               </h2>
               <div className="space-y-4 font-body text-text-secondary leading-relaxed">
                 <p>
-                  Our product range spans nine major categories of agricultural commodities — from premium oils and quality coffee to cereals, pulses, spices, hides, and sisal fiber. Each category is curated to meet the highest standards of quality, traceability, and consistency.
-                </p>
-                <p>
-                  We work directly with certified producers, cooperatives, and processing facilities across Kenya, Tanzania, Uganda, and Ethiopia. This direct relationship model ensures competitive pricing, consistent supply, and complete transparency — from farm gate to final delivery.
-                </p>
-                <p>
-                  Our portfolio is continuously evolving as we discover new products and partner with innovative producers. If you are looking for a product not currently listed, our sourcing team can locate and qualify suppliers to meet your specific requirements.
+                  Our catalog spans nine core categories — oils and fats, grains and cereals, pulses and legumes, nuts and seeds, dried fruits, spices and herbs, flours and meals, sweeteners, and beverages. Each product is sourced from growers and processors we&apos;ve personally vetted, not aggregated blind from open markets.
                 </p>
               </div>
               <Link
@@ -180,45 +193,49 @@ export default function WhatWeDo() {
         </div>
       </section>
 
-      {/* Core Values */}
+      {/* Why Sourcing Discipline Matters */}
       <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal className="text-center mb-10 sm:mb-12">
-            <span className="text-[#C79A3E] text-sm font-ui font-semibold uppercase tracking-wider">
-              What Guides Us
-            </span>
-            <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-text-primary mt-2 mb-4">
-              Our Core Values
-            </h2>
-          </ScrollReveal>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <ScrollReveal>
+              <span className="text-[#C79A3E] text-sm font-ui font-semibold uppercase tracking-wider">
+                Our Approach
+              </span>
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl text-text-primary mt-2 mb-4">
+                Why Sourcing Discipline Matters
+              </h2>
+              <div className="space-y-4 font-body text-text-secondary leading-relaxed">
+                <p>
+                  A supply chain is only as strong as its weakest link. That&apos;s why we don&apos;t just place orders — we maintain ongoing relationships with our supplier network, revisit quality standards regularly, and build in redundancy so a single grower&apos;s bad season doesn&apos;t become your stockout.
+                </p>
+              </div>
+            </ScrollReveal>
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {coreValues.map((value) => {
-              const IconComponent = valueIconMap[value.icon] || FiPackage;
-              return (
-                <StaggerItem key={value.id}>
-                  <div className="text-center p-6 sm:p-8">
-                    <div className="w-14 h-14 bg-[#1F4A3E]/10 rounded-full flex items-center justify-center mx-auto mb-5">
-                      <IconComponent size={24} className="text-[#1F4A3E]" />
-                    </div>
-                    <h3 className="font-heading font-bold text-xl text-text-primary mb-1">
-                      {value.title}
-                    </h3>
-                    <p className="text-[#C79A3E] text-sm font-ui font-medium mb-3">
-                      {value.subtitle}
-                    </p>
-                    <p className="font-body text-sm text-text-secondary leading-relaxed">
-                      {value.description}
-                    </p>
-                  </div>
-                </StaggerItem>
-              );
-            })}
-          </StaggerContainer>
+            <ScrollReveal delay={0.15} direction="right">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-[#F8F6F2] rounded-xl p-5 text-center border border-[#1F4A3E]/[0.06]">
+                  <p className="font-heading font-bold text-3xl text-[#1F4A3E] mb-1">50+</p>
+                  <p className="font-ui text-sm text-text-secondary">Partner Farms</p>
+                </div>
+                <div className="bg-[#F8F6F2] rounded-xl p-5 text-center border border-[#1F4A3E]/[0.06]">
+                  <p className="font-heading font-bold text-3xl text-[#1F4A3E] mb-1">4</p>
+                  <p className="font-ui text-sm text-text-secondary">Countries Sourced</p>
+                </div>
+                <div className="bg-[#F8F6F2] rounded-xl p-5 text-center border border-[#1F4A3E]/[0.06]">
+                  <p className="font-heading font-bold text-3xl text-[#1F4A3E] mb-1">100%</p>
+                  <p className="font-ui text-sm text-text-secondary">Traceable Supply</p>
+                </div>
+                <div className="bg-[#F8F6F2] rounded-xl p-5 text-center border border-[#1F4A3E]/[0.06]">
+                  <p className="font-heading font-bold text-3xl text-[#1F4A3E] mb-1">0</p>
+                  <p className="font-ui text-sm text-text-secondary">Middlemen</p>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
-      {/* Sustainability */}
+      {/* Core Values */}
       <section className="py-12 sm:py-16 lg:py-20 bg-[#1F4A3E] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <img
@@ -228,48 +245,38 @@ export default function WhatWeDo() {
           />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <ScrollReveal>
-              <span className="text-[#C79A3E] text-sm font-ui font-semibold uppercase tracking-wider">
-                Our Commitment
-              </span>
-              <h2 className="font-heading font-bold text-2xl sm:text-3xl text-white mt-2 mb-4">
-                Sustainability & Ethical Sourcing
-              </h2>
-              <div className="space-y-4 font-body text-white/80 leading-relaxed">
-                <p>
-                  We believe that premium quality and ethical practices go hand in hand. Our sustainability commitment spans environmental stewardship, fair labor practices, and community development.
-                </p>
-                <p>
-                  We prioritize working with farmers who employ sustainable agricultural methods — including organic farming, water conservation, and biodiversity protection. Many of our partner farms are certified organic, and we actively support others in transitioning to certified status.
-                </p>
-                <p>
-                  Fair pricing is non-negotiable. We ensure that producers receive equitable compensation for their products, enabling them to invest in their farms, families, and communities. This approach not only supports livelihoods but also ensures the long-term viability of the supply chains we depend on.
-                </p>
-              </div>
-            </ScrollReveal>
+          <ScrollReveal className="text-center mb-10 sm:mb-12">
+            <span className="text-[#C79A3E] text-sm font-ui font-semibold uppercase tracking-wider">
+              Our Foundation
+            </span>
+            <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white mt-2 mb-4">
+              What Drives How We Work
+            </h2>
+          </ScrollReveal>
 
-            <ScrollReveal delay={0.15} direction="right">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center">
-                  <p className="font-heading font-bold text-3xl text-[#C79A3E] mb-1">100%</p>
-                  <p className="font-ui text-sm text-white/80">Ethical Sourcing</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center">
-                  <p className="font-heading font-bold text-3xl text-[#C79A3E] mb-1">50+</p>
-                  <p className="font-ui text-sm text-white/80">Partner Farms</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center">
-                  <p className="font-heading font-bold text-3xl text-[#C79A3E] mb-1">9</p>
-                  <p className="font-ui text-sm text-white/80">Product Categories</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center">
-                  <p className="font-heading font-bold text-3xl text-[#C79A3E] mb-1">0</p>
-                  <p className="font-ui text-sm text-white/80">Middlemen</p>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            {coreValues.map((value) => {
+              const IconComponent = valueIconMap[value.icon] || FiPackage;
+              return (
+                <StaggerItem key={value.id}>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-white/10 text-center">
+                    <div className="w-14 h-14 bg-[#C79A3E]/20 rounded-full flex items-center justify-center mx-auto mb-5">
+                      <IconComponent size={24} className="text-[#C79A3E]" />
+                    </div>
+                    <h3 className="font-heading font-bold text-xl text-white mb-1">
+                      {value.title}
+                    </h3>
+                    <p className="text-[#C79A3E] text-sm font-ui font-medium mb-3">
+                      {value.subtitle}
+                    </p>
+                    <p className="font-body text-sm text-white/70 leading-relaxed">
+                      {value.description}
+                    </p>
+                  </div>
+                </StaggerItem>
+              );
+            })}
+          </StaggerContainer>
         </div>
       </section>
     </div>
