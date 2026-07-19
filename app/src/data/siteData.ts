@@ -27,31 +27,31 @@ export const whyChooseUsItems: WhyChooseUsItem[] = [
   {
     id: 1,
     title: 'Vetted Supplier Network',
-    description: 'Every supplier in our network is assessed for financial stability, production capacity, and consistency before we bring them into the fold — so what you order is what you can depend on, shipment after shipment.',
+    description: 'Every supplier is assessed for financial stability, production capacity, and consistency before entering our network, so what you order is exactly what arrives, shipment after shipment.',
     icon: 'Shield',
   },
   {
     id: 2,
     title: 'Ethical & Compliant Sourcing',
-    description: 'We hold every partner to clear standards on labor practices and factory conditions, because a supply chain you can stand behind matters as much as the product itself.',
+    description: 'We hold every partner to strict standards on labor practices and factory conditions, because a supply chain you can stand behind matters as much as the product itself.',
     icon: 'CheckCircle',
   },
   {
     id: 3,
     title: 'On-Time, Every Time',
-    description: 'Agricultural sourcing lives and dies on timelines. We plan shipments with buffer, communicate early on any risk, and treat your deadline as our deadline.',
+    description: 'Agricultural sourcing lives and dies on timelines. We build buffer into every shipment, communicate early on any risk, and treat your deadline as non-negotiable.',
     icon: 'Clock',
   },
   {
     id: 4,
     title: 'Pricing That Respects Your Margins',
-    description: 'Direct relationships with growers and processors mean fewer middlemen between the farm and your invoice — and better pricing passed straight to you.',
+    description: 'Direct relationships with growers and processors cut out unnecessary middlemen between the farm and your invoice, delivering better pricing passed straight to you.',
     icon: 'Tag',
   },
   {
     id: 5,
     title: "You're Never in the Dark",
-    description: 'From order confirmation to delivery, we proactively update you at every stage — no chasing us for status, no surprises at the port.',
+    description: 'From order confirmation to delivery, we proactively update you at every stage. No chasing for status, no surprises at the port.',
     icon: 'RefreshCw',
   },
 ];
@@ -95,21 +95,21 @@ export const coreValues: CoreValue[] = [
     id: 1,
     title: 'Partnership',
     subtitle: 'Built to Last',
-    description: 'We see every client relationship as a long-term partnership, not a single transaction. That means fair terms, honest communication, and showing up consistently — from your first small order to your hundredth.',
+    description: 'We see every client relationship as a long-term partnership, not a single transaction. That means fair terms, honest communication, and showing up consistently, from your first small order to your hundredth.',
     icon: 'Users',
   },
   {
     id: 2,
     title: 'Progress',
     subtitle: 'Moving Agriculture Forward',
-    description: 'Agriculture in East Africa is changing fast, and we want to be part of that change — helping farmers adopt better practices while helping buyers access more consistent, better-documented supply.',
+    description: 'Agriculture in East Africa is changing fast, and we want to be part of that change, helping farmers adopt better practices while helping buyers access more consistent, better-documented supply.',
     icon: 'TrendingUp',
   },
   {
     id: 3,
     title: 'Full Commitment',
     subtitle: 'All In, Always',
-    description: "When we take on a client, we take on their standards as our own. Quality isn't a checkbox for us — it's the reason repeat clients keep coming back.",
+    description: "When we take on a client, we take on their standards as our own. Quality isn't a checkbox for us; it's the reason repeat clients keep coming back.",
     icon: 'Award',
   },
 ];
@@ -226,7 +226,7 @@ export const commitmentSteps: CommitmentStep[] = [
   {
     id: 1,
     title: 'Integrity First',
-    description: "We build relationships meant to last years, not single transactions — which means transparency even when it's inconvenient.",
+    description: "We build relationships meant to last years, not single transactions, which means transparency even when it's inconvenient.",
     icon: 'Heart',
   },
   {
@@ -238,24 +238,24 @@ export const commitmentSteps: CommitmentStep[] = [
   {
     id: 3,
     title: 'Breadth Without Compromise',
-    description: 'A wide product range doesn\'t mean lower quality on any single item — every category gets the same scrutiny.',
+    description: 'A wide product range doesn\'t mean lower quality on any single item; every category gets the same scrutiny.',
     icon: 'Grid',
   },
   {
     id: 4,
     title: "Standards That Don't Slip",
-    description: "From the first sample to the final shipment, we hold the line on quality — because that's what earns repeat business.",
+    description: "From the first sample to the final shipment, we hold the line on quality, because that's what earns repeat business.",
     icon: 'CheckCircle',
   },
 ];
 
 export const companyInfo = {
-  name: 'SHAMBAMALL',
+  name: 'AgroWorldHub',
   tagline: 'Your Trusted Manufacturer & Sourcing Partner in East Africa',
-  description: 'SHAMBAMALL is a premium agricultural trading company based in Nairobi, Kenya. We specialize in sourcing, processing, and exporting high-quality agricultural products to clients worldwide.',
+  description: 'AgroWorldHub is a premium agricultural trading company based in Nairobi, Kenya. We specialize in sourcing, processing, and exporting high-quality agricultural products to clients worldwide.',
   address: 'L.R. No. 330/210, Mombasa Road, Nairobi, Kenya',
   phone: '+254 791 312 250',
-  email: 'info@shambamall.com',
+  email: 'info@agroworldhub.com',
   whatsappNumber: '254791312250',
   social: {
     facebook: '#',

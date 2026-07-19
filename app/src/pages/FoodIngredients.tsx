@@ -25,7 +25,7 @@ export default function FoodIngredients() {
               Food Ingredients
             </h1>
             <p className="font-body text-base sm:text-lg text-white/80 max-w-3xl">
-              Browse our core ingredient categories below — each backed by vetted sourcing and full traceability.
+              Browse our core ingredient categories below, each backed by vetted sourcing and full traceability.
             </p>
           </ScrollReveal>
         </div>

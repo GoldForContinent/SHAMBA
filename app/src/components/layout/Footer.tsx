@@ -3,6 +3,7 @@ import { FiFacebook, FiInstagram, FiLinkedin, FiTwitter, FiMapPin, FiPhone, FiMa
 import { companyInfo } from '@/data/siteData';
 import { navLinks } from '@/data/siteData';
 import { categories } from '@/data/products';
+import Logo from '@/components/layout/Logo';
 
 export default function Footer() {
   return (
@@ -12,13 +13,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Brand Column */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
-                <span className="text-white font-heading font-bold text-lg">S</span>
-              </div>
-              <span className="font-heading font-bold text-xl text-white tracking-tight">
-                SHAMBAMALL
-              </span>
+            <Link to="/" className="mb-4 block">
+              <Logo variant="compact" light className="h-14 w-auto" />
             </Link>
             <p className="text-white/70 text-sm font-body leading-relaxed mb-6 max-w-xs">
               Your trusted manufacturer and sourcing partner in East Africa. Premium agricultural products, ethically sourced and delivered globally.
@@ -80,7 +76,7 @@ export default function Footer() {
               Categories
             </h3>
             <ul className="space-y-2.5">
-              {categories.slice(0, 6).map((category) => (
+              {categories.map((category) => (
                 <li key={category.slug}>
                   <Link
                     to={`/shop?category=${category.slug}`}
@@ -125,11 +121,21 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-white/50 text-xs font-ui text-center sm:text-left">
-              &copy; {new Date().getFullYear()} SHAMBAMALL. All rights reserved.
+              &copy; {new Date().getFullYear()} AgroWorldHub. All rights reserved.
             </p>
-            <p className="text-white/50 text-xs font-ui">
-              Premium Agricultural Trading from Nairobi, Kenya
-            </p>
+            <div className="flex items-center gap-4">
+              <Link to="/privacy-policy" className="text-white/50 hover:text-white/80 text-xs font-ui transition-colors">
+                Privacy Policy
+              </Link>
+              <span className="text-white/20">|</span>
+              <Link to="/terms-of-service" className="text-white/50 hover:text-white/80 text-xs font-ui transition-colors">
+                Terms of Service
+              </Link>
+              <span className="text-white/20 hidden sm:inline">|</span>
+              <span className="text-white/50 text-xs font-ui hidden sm:inline">
+                Premium Agricultural Trading from Nairobi, Kenya
+              </span>
+            </div>
           </div>
         </div>
       </div>

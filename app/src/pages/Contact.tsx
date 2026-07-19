@@ -337,7 +337,7 @@ export default function Contact() {
                         <FiMapPin size={24} className="text-[#1F4A3E]" />
                       </div>
                       <p className="font-heading font-semibold text-base text-text-primary mb-1">
-                        SHAMBAMALL
+                        AgroWorldHub
                       </p>
                       <p className="font-ui text-sm text-text-secondary">
                         {companyInfo.address}

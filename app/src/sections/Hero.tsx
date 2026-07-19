@@ -21,20 +21,10 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
         <div className="max-w-2xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            <span className="inline-block px-4 py-1.5 bg-[#C79A3E]/20 border border-[#C79A3E]/30 rounded-full text-[#C79A3E] text-xs sm:text-sm font-ui font-semibold uppercase tracking-wider mb-6">
-              Est. Nairobi, Kenya
-            </span>
-          </motion.div>
-
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
             className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-6"
           >
             Your Trusted Manufacturer & Sourcing Partner in{' '}
@@ -47,7 +37,7 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.6 }}
             className="font-body text-base sm:text-lg text-white/80 leading-relaxed mb-8 max-w-xl"
           >
-            {companyInfo.tagline}. We connect global buyers with premium agricultural products — ethically sourced, rigorously tested, and delivered with excellence.
+            {companyInfo.tagline}. We connect global buyers with premium agricultural products, ethically sourced, rigorously tested, and delivered with excellence.
           </motion.p>
 
           <motion.div

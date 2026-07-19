@@ -16,7 +16,7 @@ export default function CTABanner() {
             Ready to Source with Confidence?
           </h2>
           <p className="font-body text-base sm:text-lg text-white/80 mb-8 max-w-2xl mx-auto">
-            Join buyers worldwide who trust SHAMBAMALL for premium agricultural products. Get in touch today and let us handle your sourcing needs.
+            Join buyers worldwide who trust AgroWorldHub for premium agricultural products. Get in touch today and let us handle your sourcing needs.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

@@ -3,6 +3,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import WhatsAppFAB from '@/components/layout/WhatsAppFAB';
 import ScrollToTop from '@/components/layout/ScrollToTop';
+import CookieConsent from '@/components/layout/CookieConsent';
 import Home from '@/pages/Home';
 import Assortment from '@/pages/Assortment';
 import Shop from '@/pages/Shop';
@@ -13,6 +14,8 @@ import Services from '@/pages/Services';
 import PrivateLabel from '@/pages/PrivateLabel';
 import FoodIngredients from '@/pages/FoodIngredients';
 import Contact from '@/pages/Contact';
+import PrivacyPolicy from '@/pages/PrivacyPolicy';
+import TermsOfService from '@/pages/TermsOfService';
 
 export default function App() {
   return (
@@ -31,10 +34,13 @@ export default function App() {
           <Route path="/quality" element={<Quality />} />
           <Route path="/quality/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
         </Routes>
       </main>
       <Footer />
       <WhatsAppFAB />
+      <CookieConsent />
     </>
   );
 }

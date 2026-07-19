@@ -1,8 +1,6 @@
 import { Link } from 'react-router';
-import { FiArrowRight, FiTag } from 'react-icons/fi';
+import { FiArrowRight, FiPackage, FiTag } from 'react-icons/fi';
 import ScrollReveal from '@/components/ui-custom/ScrollReveal';
-import StaggerContainer, { StaggerItem } from '@/components/ui-custom/StaggerContainer';
-import { categories } from '@/data/products';
 
 export default function Assortment() {
   return (
@@ -25,93 +23,125 @@ export default function Assortment() {
               Our Assortment
             </h1>
             <p className="font-body text-base sm:text-lg text-white/80 max-w-2xl">
-              Explore what we source and supply — from raw agricultural ingredients to full private-label packaging support.
+              Explore what we source and supply, from raw agricultural ingredients to full private-label packaging support.
             </p>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Categories Grid */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-[#F8F6F2]">
+      {/* ── Two-Panel Creative Section ── */}
+      <section className="py-16 sm:py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {categories.map((category) => (
-              <StaggerItem key={category.slug}>
-                <Link
-                  to={`/shop?category=${category.slug}`}
-                  className="group block bg-white rounded-xl overflow-hidden shadow-card border border-[#1F4A3E]/[0.04] hover:shadow-lift transition-all duration-300"
-                >
-                  {/* Image */}
-                  <div className="relative aspect-[3/2] overflow-hidden">
-                    <img
-                      src={category.imageUrl}
-                      alt={category.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-[#C79A3E] text-white text-xs font-ui font-medium rounded-md">
-                        <FiTag size={10} />
-                        {category.productCount} Products
-                      </span>
-                    </div>
+          <ScrollReveal className="text-center mb-12 sm:mb-16">
+            <span className="text-[#C79A3E] text-sm font-ui font-semibold uppercase tracking-wider">
+              Two Ways We Serve You
+            </span>
+            <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-text-primary mt-3 mb-4 leading-tight">
+              Choose Your{' '}
+              <span className="text-[#1F4A3E]">Path</span>
+            </h2>
+            <p className="font-body text-base sm:text-lg text-text-secondary max-w-2xl mx-auto">
+              Whether you need raw ingredients for your production line or a fully branded product ready for your shelf, we&apos;ve got you covered.
+            </p>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-6">
+            {/* ── Food Ingredients Panel ── */}
+            <ScrollReveal direction="left" delay={0.1}>
+              <Link
+                to="/assortment/food-ingredients"
+                className="group relative block w-full overflow-hidden lg:rounded-l-[2.5rem] lg:rounded-tr-[1rem] lg:rounded-br-[1rem] lg:rounded-tl-[2.5rem] rounded-2xl aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5] shadow-lift hover:shadow-[0_20px_60px_rgba(31,74,62,0.25)] transition-all duration-500"
+              >
+                {/* Background image — hidden by default, revealed on hover */}
+                <img
+                  src="https://images.unsplash.com/photo-1705765276919-d1d0c69377ac?w=900&h=1100&fit=crop"
+                  alt="Assorted food ingredients: grains, beans, spices"
+                  className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700 scale-105 group-hover:scale-100"
+                  loading="lazy"
+                />
+
+                {/* Solid brand background — fades out on hover */}
+                <div className="absolute inset-0 bg-[#1F4A3E] group-hover:opacity-0 transition-opacity duration-700" />
+
+                {/* Dark overlay on hover for text contrast */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-700" />
+
+                {/* Content */}
+                <div className="absolute inset-0 flex flex-col justify-between p-8 sm:p-10 lg:p-12 z-10">
+                  {/* Top: Icon badge */}
+                  <div className="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/25 transition-colors duration-300">
+                    <FiPackage size={24} className="text-white" />
                   </div>
 
-                  {/* Content */}
-                  <div className="p-5 sm:p-6">
-                    <h2 className="font-heading font-semibold text-lg text-text-primary mb-2 group-hover:text-[#1F4A3E] transition-colors">
-                      {category.name}
-                    </h2>
-                    <p className="font-body text-sm text-text-secondary leading-relaxed mb-4">
-                      {category.description}
+                  {/* Bottom: Text */}
+                  <div>
+                    <h3 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-white mb-3 leading-none uppercase tracking-tight">
+                      Food{' '}
+                      <br className="hidden sm:block" />
+                      Ingredients
+                    </h3>
+
+                    <p className="font-body text-white/70 text-sm sm:text-base max-w-md mb-5 leading-relaxed">
+                      Browse our full catalog of vetted agricultural ingredients, including oils, grains, spices, pulses, and more, with complete traceability from source to shipment.
                     </p>
-                    <span className="inline-flex items-center gap-1.5 text-[#1F4A3E] font-ui font-medium text-sm group-hover:gap-2.5 transition-all">
-                      View Products
-                      <FiArrowRight size={14} />
+
+                    <span className="inline-flex items-center gap-2 text-white font-ui font-semibold text-sm group-hover:text-[#C79A3E] transition-colors duration-300">
+                      Explore Catalog
+                      <FiArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform duration-300" />
                     </span>
                   </div>
-                </Link>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
-
-      {/* Private Label Banner */}
-      <section className="py-12 sm:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="relative bg-[#1F4A3E] rounded-2xl overflow-hidden">
-              <div className="absolute inset-0 opacity-20">
-                <img
-                  src="https://images.unsplash.com/photo-1584652868574-0669f4292976?w=1200&h=400&fit=crop"
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="relative z-10 px-6 sm:px-10 lg:px-16 py-10 sm:py-14 lg:py-16 flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-10">
-                <div className="flex-1">
-                  <span className="inline-block px-3 py-1 bg-[#C79A3E]/20 border border-[#C79A3E]/30 rounded-full text-[#C79A3E] text-xs font-ui font-semibold uppercase tracking-wider mb-4">
-                    Private Label Services
-                  </span>
-                  <h2 className="font-heading font-bold text-2xl sm:text-3xl text-white mb-3">
-                    Build Your Own Brand on Our Supply Chain
-                  </h2>
-                  <p className="font-body text-white/80 max-w-xl">
-                    We pack, blend, and prepare high-quality agricultural ingredients under your brand. Need help figuring out the right mix or format? We&apos;ll work through it with you.
-                  </p>
                 </div>
-                <Link
-                  to="/assortment/private-label"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#C79A3E] text-white font-ui font-semibold rounded-lg hover:bg-[#B38A35] transition-colors shadow-lift flex-shrink-0"
-                >
-                  Learn More
-                  <FiArrowRight size={18} />
-                </Link>
-              </div>
-            </div>
-          </ScrollReveal>
+              </Link>
+            </ScrollReveal>
+
+            {/* ── Private Label Panel ── */}
+            <ScrollReveal direction="right" delay={0.2}>
+              <Link
+                to="/assortment/private-label"
+                className="group relative block w-full overflow-hidden lg:rounded-r-[2.5rem] lg:rounded-tl-[1rem] lg:rounded-bl-[1rem] lg:rounded-tr-[2.5rem] rounded-2xl aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5] shadow-lift hover:shadow-[0_20px_60px_rgba(199,154,62,0.25)] transition-all duration-500"
+              >
+                {/* Background image — hidden by default, revealed on hover */}
+                <img
+                  src="https://images.unsplash.com/photo-1663269275910-7b161cd02284?w=900&h=1100&fit=crop"
+                  alt="Private label glass jars with white labels"
+                  className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700 scale-105 group-hover:scale-100"
+                  loading="lazy"
+                />
+
+                {/* Solid brand background — fades out on hover */}
+                <div className="absolute inset-0 bg-[#C79A3E] group-hover:opacity-0 transition-opacity duration-700" />
+
+                {/* Dark overlay on hover for text contrast */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-700" />
+
+                {/* Content */}
+                <div className="absolute inset-0 flex flex-col justify-between p-8 sm:p-10 lg:p-12 z-10">
+                  {/* Top: Icon badge */}
+                  <div className="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/25 transition-colors duration-300">
+                    <FiTag size={24} className="text-white" />
+                  </div>
+
+                  {/* Bottom: Text */}
+                  <div>
+                    <h3 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-white mb-3 leading-none uppercase tracking-tight">
+                      Private{' '}
+                      <br className="hidden sm:block" />
+                      Label
+                    </h3>
+
+                    <p className="font-body text-white/70 text-sm sm:text-base max-w-md mb-5 leading-relaxed">
+                      We pack, blend, and prepare high-quality agricultural ingredients under your brand, from custom formulations to retail-ready packaging.
+                    </p>
+
+                    <span className="inline-flex items-center gap-2 text-white font-ui font-semibold text-sm group-hover:text-[#1F4A3E] transition-colors duration-300">
+                      Build Your Brand
+                      <FiArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform duration-300" />
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
     </div>

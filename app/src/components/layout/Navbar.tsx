@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMenu, FiX, FiChevronDown } from 'react-icons/fi';
 import { navLinks } from '@/data/siteData';
+import Logo from '@/components/layout/Logo';
 import type { NavLink } from '@/types';
 
 function DesktopDropdown({ link, isHomepage, isScrolled }: { link: NavLink; isHomepage: boolean; isScrolled: boolean }) {
@@ -243,17 +244,12 @@ export default function Navbar() {
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2 flex-shrink-0">
-              <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center transition-colors duration-300 ${
-                !isHomepage || isScrolled ? 'bg-brand-primary' : 'bg-white/20 backdrop-blur-sm'
-              }`}>
-                <span className="text-white font-heading font-bold text-sm sm:text-base">S</span>
-              </div>
-              <span className={`font-heading font-bold text-lg sm:text-xl tracking-tight transition-colors duration-300 ${
-                !isHomepage || isScrolled ? 'text-brand-primary' : 'text-white'
-              }`}>
-                SHAMBAMALL
-              </span>
+            <Link to="/" className="flex-shrink-0">
+              <Logo
+                variant="compact"
+                light={!isHomepage || isScrolled ? false : true}
+                className={`h-10 sm:h-12 w-auto transition-opacity duration-300`}
+              />
             </Link>
 
             {/* Desktop Navigation */}
