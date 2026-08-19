@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router';
-import { FiMessageCircle, FiFilter, FiGrid, FiList, FiPackage } from 'react-icons/fi';
+import { FiMessageCircle, FiFilter, FiGrid, FiList, FiPackage, FiSearch, FiX } from 'react-icons/fi';
 import ScrollReveal from '@/components/ui-custom/ScrollReveal';
 import { categories } from '@/data/products';
 import { useProducts } from '@/hooks/useProducts';
@@ -16,6 +16,7 @@ export default function Shop() {
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [currentPage, setCurrentPage] = useState(1);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const { products, loading, error } = useProducts();
 
@@ -34,11 +35,26 @@ export default function Shop() {
   }, [searchParams]);
 
   const filteredProducts = useMemo(() => {
-    if (selectedCategory === 'all') return products;
-    const category = categories.find(c => c.slug === selectedCategory);
-    if (!category) return products;
-    return products.filter(p => p.category === category.name);
-  }, [selectedCategory, products]);
+    let result = selectedCategory === 'all'
+      ? products
+      : products.filter(p => {
+          const category = categories.find(c => c.slug === selectedCategory);
+          return category ? p.category === category.name : true;
+        });
+
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
+      result = result.filter(p =>
+        p.productName.toLowerCase().includes(q) ||
+        p.description.toLowerCase().includes(q) ||
+        p.category.toLowerCase().includes(q) ||
+        p.subCategory?.toLowerCase().includes(q) ||
+        p.origin?.toLowerCase().includes(q)
+      );
+    }
+
+    return result;
+  }, [selectedCategory, products, searchQuery]);
 
   const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE);
   const paginatedProducts = useMemo(() => {
@@ -172,27 +188,47 @@ export default function Shop() {
             {/* Product Grid */}
             <div className="flex-1 min-w-0">
               {/* Toolbar */}
-              <div className="flex items-center justify-between mb-5">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-5">
                 <p className="font-ui text-sm text-text-secondary">
                   {loading
                     ? 'Loading...'
                     : `Showing ${paginatedProducts.length} of ${filteredProducts.length} products`}
                 </p>
-                <div className="hidden sm:flex items-center gap-1 bg-white rounded-lg p-1 shadow-sm">
-                  <button
-                    onClick={() => setViewMode('grid')}
-                    className={`p-2 rounded ${viewMode === 'grid' ? 'bg-[#1F4A3E] text-white' : 'text-text-secondary hover:text-text-primary'}`}
-                    aria-label="Grid view"
-                  >
-                    <FiGrid size={16} />
-                  </button>
-                  <button
-                    onClick={() => setViewMode('list')}
-                    className={`p-2 rounded ${viewMode === 'list' ? 'bg-[#1F4A3E] text-white' : 'text-text-secondary hover:text-text-primary'}`}
-                    aria-label="List view"
-                  >
-                    <FiList size={16} />
-                  </button>
+                <div className="flex items-center gap-3 w-full sm:w-auto">
+                  <div className="relative flex-1 sm:flex-initial">
+                    <FiSearch size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary/60" />
+                    <input
+                      type="text"
+                      value={searchQuery}
+                      onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); }}
+                      placeholder="Search products..."
+                      className="w-full sm:w-56 pl-9 pr-8 py-2 bg-white rounded-lg font-ui text-sm text-text-primary placeholder:text-text-secondary/50 border border-gray-200 focus:border-[#1F4A3E] focus:ring-1 focus:ring-[#1F4A3E]/30 outline-none transition-all"
+                    />
+                    {searchQuery && (
+                      <button
+                        onClick={() => setSearchQuery('')}
+                        className="absolute right-2.5 top-1/2 -translate-y-1/2 text-text-secondary/50 hover:text-text-primary"
+                      >
+                        <FiX size={14} />
+                      </button>
+                    )}
+                  </div>
+                  <div className="hidden sm:flex items-center gap-1 bg-white rounded-lg p-1 shadow-sm">
+                    <button
+                      onClick={() => setViewMode('grid')}
+                      className={`p-2 rounded ${viewMode === 'grid' ? 'bg-[#1F4A3E] text-white' : 'text-text-secondary hover:text-text-primary'}`}
+                      aria-label="Grid view"
+                    >
+                      <FiGrid size={16} />
+                    </button>
+                    <button
+                      onClick={() => setViewMode('list')}
+                      className={`p-2 rounded ${viewMode === 'list' ? 'bg-[#1F4A3E] text-white' : 'text-text-secondary hover:text-text-primary'}`}
+                      aria-label="List view"
+                    >
+                      <FiList size={16} />
+                    </button>
+                  </div>
                 </div>
               </div>
 
@@ -313,16 +349,18 @@ export default function Shop() {
                     <FiPackage size={28} className="text-[#1F4A3E]" />
                   </div>
                   <h3 className="font-heading font-semibold text-lg text-text-primary mb-2">
-                    No Products Found
+                    {searchQuery ? 'No Results Found' : 'No Products Found'}
                   </h3>
                   <p className="font-body text-sm text-text-secondary mb-4 max-w-sm">
-                    No products available in this category yet. Please check back later or browse other categories.
+                    {searchQuery
+                      ? `No products match "${searchQuery}". Try a different search term.`
+                      : 'No products available in this category yet. Please check back later or browse other categories.'}
                   </p>
                   <button
-                    onClick={() => handleCategoryChange('all')}
+                    onClick={() => { setSearchQuery(''); handleCategoryChange('all'); }}
                     className="px-5 py-2.5 bg-[#1F4A3E] text-white font-ui font-medium rounded-lg hover:bg-[#16382F] transition-colors"
                   >
-                    View All Products
+                    {searchQuery ? 'Clear Search' : 'View All Products'}
                   </button>
                 </div>
               )}
