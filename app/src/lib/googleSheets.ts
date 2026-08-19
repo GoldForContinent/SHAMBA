@@ -123,7 +123,8 @@ function parseGvizResponse(rawText: string): RawSheetRow[] {
     const obj: RawSheetRow = {};
     cols.forEach((col, i) => {
       const cell = row.c[i];
-      obj[col.id] = cell?.v != null ? String(cell.v) : '';
+      const key = col.label || col.id;
+      obj[key] = cell?.v != null ? String(cell.v) : '';
     });
     return obj;
   });
