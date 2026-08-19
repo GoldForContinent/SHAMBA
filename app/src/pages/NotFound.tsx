@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { FiHome, FiArrowLeft, FiSearch } from 'react-icons/fi';
+import { FiHome, FiSearch } from 'react-icons/fi';
 import ScrollReveal from '@/components/ui-custom/ScrollReveal';
 
 export default function NotFound() {
