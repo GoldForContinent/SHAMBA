@@ -89,6 +89,46 @@ function mapRowToProduct(row: RawSheetRow, index: number): Product {
   };
 }
 
+interface GvizCell {
+  v: string | number | null;
+  f?: string;
+}
+
+interface GvizRow {
+  c: (GvizCell | null)[];
+}
+
+interface GvizResponse {
+  version: string;
+  reqId: string;
+  status: string;
+  sig: string;
+  table: {
+    cols: { id: string; label: string; type: string }[];
+    rows: GvizRow[];
+    parsedNumHeaders: number;
+  };
+}
+
+function parseGvizResponse(rawText: string): RawSheetRow[] {
+  const jsonStart = rawText.indexOf('(');
+  const jsonEnd = rawText.lastIndexOf(')');
+  if (jsonStart === -1 || jsonEnd === -1) {
+    throw new Error('Invalid Google Sheets GViz response format');
+  }
+  const parsed: GvizResponse = JSON.parse(rawText.slice(jsonStart + 1, jsonEnd));
+  const { cols, rows } = parsed.table;
+
+  return rows.map(row => {
+    const obj: RawSheetRow = {};
+    cols.forEach((col, i) => {
+      const cell = row.c[i];
+      obj[col.id] = cell?.v != null ? String(cell.v) : '';
+    });
+    return obj;
+  });
+}
+
 export async function fetchProducts(): Promise<Product[]> {
   const apiUrl = import.meta.env.VITE_SHEETS_API_URL as string | undefined;
 
@@ -105,18 +145,25 @@ export async function fetchProducts(): Promise<Product[]> {
       throw new Error(`Sheets API responded with status ${response.status}`);
     }
 
-    const data: unknown = await response.json();
+    const rawText = await response.text();
+    let rows: RawSheetRow[];
 
-    if (!Array.isArray(data)) {
-      throw new Error('Expected an array of rows from the sheets API');
+    if (rawText.startsWith('google.visualization.Query.setResponse')) {
+      rows = parseGvizResponse(rawText);
+    } else {
+      const data: unknown = JSON.parse(rawText);
+      if (!Array.isArray(data)) {
+        throw new Error('Expected an array of rows from the sheets API');
+      }
+      rows = data as RawSheetRow[];
     }
 
-    if (data.length === 0) {
+    if (rows.length === 0) {
       console.warn('Sheets API returned empty data. Falling back to static products.');
       return staticProducts;
     }
 
-    return data.map((row: RawSheetRow, index: number) => mapRowToProduct(row, index));
+    return rows.map((row: RawSheetRow, index: number) => mapRowToProduct(row, index));
   } catch (err) {
     console.warn(
       'Failed to fetch products from Google Sheets. Falling back to static data.',
