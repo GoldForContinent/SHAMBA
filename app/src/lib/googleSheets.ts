@@ -149,7 +149,7 @@ export async function fetchProducts(): Promise<Product[]> {
     const rawText = await response.text();
     let rows: RawSheetRow[];
 
-    if (rawText.startsWith('google.visualization.Query.setResponse')) {
+    if (rawText.includes('google.visualization.Query.setResponse')) {
       rows = parseGvizResponse(rawText);
     } else {
       const data: unknown = JSON.parse(rawText);
