@@ -11,7 +11,8 @@ import { Skeleton } from '@/components/ui/skeleton';
 export default function ProductDetail() {
   const { slug } = useParams<{ slug: string }>();
   const { products, loading, error } = useProducts();
-
+  const [mainImage, setMainImage] = useState(product?.imageUrl || '');
+  
   const product = useMemo(() => {
     if (!slug || loading) return undefined;
     return products.find((p) => p.slug === slug);
@@ -154,12 +155,32 @@ export default function ProductDetail() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12">
             {/* Product Image */}
             <ScrollReveal>
-              <div className="bg-white rounded-2xl overflow-hidden shadow-card aspect-square lg:sticky lg:top-24">
-                <img
-                  src={product.imageUrl}
-                  alt={product.productName}
-                  className="w-full h-full object-cover"
-                />
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                {/* Main Image */}
+                <div className="lg:col-span-1">
+                  <div className="bg-white rounded-2xl overflow-hidden shadow-card aspect-square lg:sticky lg:top-24">
+                    <img
+                      src={mainImage}
+                      alt={product.productName}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+
+                {/* Additional Images Gallery */}
+                {product.imageUrls.length > 0 && (
+                  <div className="lg:col-span-1 space-y-2">
+                    {product.imageUrls.map((imgUrl, i) => (
+                      <img
+                        key={i}
+                        src={imgUrl}
+                        alt={`${product.productName} additional image ${i + 1}`}
+                        className="w-full h-24 object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                        onClick={() => setMainImage(imgUrl)}
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
             </ScrollReveal>
 
@@ -386,6 +407,41 @@ export default function ProductDetail() {
           </div>
         </div>
       </section>
+
+      {/* Product Image Gallery */}
+      {product.imageUrl || product.imageUrls.length > 0 && (
+        <section className="py-8 sm:py-12 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <ScrollReveal>
+              <h2 className="font-heading font-bold text-xl sm:text-2xl text-text-primary mb-4">
+                Product Images
+              </h2>
+            </ScrollReveal>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              <div>
+                <div className="bg-white rounded-2xl overflow-hidden shadow-card aspect-square">
+                  <img
+                    src={mainImage}
+                    alt={product.productName}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <p className="font-ui text-xs text-text-secondary text-center py-2">Main Image</p>
+              </div>
+              {product.imageUrls.map((imgUrl, i) => (
+                <div key={i}>
+                  <img
+                    src={imgUrl}
+                    alt={`${product.productName} gallery image ${i + 1}`}
+                    className="w-full h-24 object-cover cursor-pointer hover:opacity-70 transition-opacity"
+                  />
+                  <p className="font-ui text-xs text-text-secondary text-center pt-1">Additional ${i + 1}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Related Products */}
       {relatedProducts.length > 0 && (

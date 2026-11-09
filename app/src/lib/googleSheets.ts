@@ -63,6 +63,14 @@ function mapRowToProduct(row: RawSheetRow, index: number): Product {
     ? parseKeyValuePairs(row.nutritionalValues)
     : undefined;
 
+  // Parse multiple image URLs (comma-separated or semicolon-separated)
+  let imageUrls: string[] = [];
+  if (row.imageUrls?.trim()) {
+    // Try semicolon first, then comma
+    const separator = row.imageUrls.includes(';') ? ';' : ',';
+    imageUrls = row.imageUrls.split(separator).map(url => url.trim()).filter(Boolean);
+  }
+
   return {
     id: row.id ? Number(row.id) : index + 1,
     slug: row.slug?.trim() || toSlug(name),
@@ -72,7 +80,8 @@ function mapRowToProduct(row: RawSheetRow, index: number): Product {
     description: row.description?.trim() ?? '',
     fullDescription: row.fullDescription?.trim() || undefined,
     price: price !== undefined && !isNaN(price) ? price : undefined,
-    imageUrl: row.imageUrl?.trim() ?? '',
+    imageUrl: imageUrls.length > 0 ? imageUrls[0] : (row.imageUrl?.trim() ?? ''),
+    imageUrls: imageUrls.length > 0 ? imageUrls : [],
     stockStatus: (['In Stock', 'Out of Stock', 'Pre-Order'].includes(row.stockStatus?.trim() ?? '')
       ? (row.stockStatus!.trim() as Product['stockStatus'])
       : 'In Stock'),
