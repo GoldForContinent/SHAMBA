@@ -11,6 +11,7 @@ interface RawSheetRow {
   fullDescription?: string;
   price?: string;
   imageUrl?: string;
+  imageUrls?: string;
   stockStatus?: string;
   featured?: string;
   origin?: string;
@@ -41,6 +42,19 @@ function parseKeyValuePairs(raw: string): Record<string, string> {
   );
 }
 
+// Parse multiple image URLs from a cell. Handles links separated by `;`, `,`
+// or line breaks. A single URL is always kept whole (URLs can contain commas
+// in query strings, so we only split when more than one URL is detected).
+function parseImageUrls(raw: string): string[] {
+  const trimmed = raw.trim();
+  if (!trimmed) return [];
+  const urlCount = (trimmed.match(/https?:\/\//g) || []).length;
+  const parts = urlCount > 1 && !trimmed.includes(';')
+    ? trimmed.split(/[,\s]+/)
+    : trimmed.split(';');
+  return parts.map(s => s.trim()).filter(Boolean);
+}
+
 function mapRowToProduct(row: RawSheetRow, index: number): Product {
   const name = row.productName ?? `Product ${index + 1}`;
   const priceStr = row.price?.trim();
@@ -63,13 +77,10 @@ function mapRowToProduct(row: RawSheetRow, index: number): Product {
     ? parseKeyValuePairs(row.nutritionalValues)
     : undefined;
 
-  // Parse multiple image URLs (comma-separated or semicolon-separated)
-  let imageUrls: string[] = [];
-  if (row.imageUrls?.trim()) {
-    // Try semicolon first, then comma
-    const separator = row.imageUrls.includes(';') ? ';' : ',';
-    imageUrls = row.imageUrls.split(separator).map(url => url.trim()).filter(Boolean);
-  }
+  // Parse multiple image URLs. Accepts them from the `imageUrls` column, or
+  // falls back to the `imageUrl` column (handles the case where several links
+  // were pasted there).
+  const imageUrls = parseImageUrls(row.imageUrls ?? row.imageUrl ?? '');
 
   return {
     id: row.id ? Number(row.id) : index + 1,
@@ -80,8 +91,8 @@ function mapRowToProduct(row: RawSheetRow, index: number): Product {
     description: row.description?.trim() ?? '',
     fullDescription: row.fullDescription?.trim() || undefined,
     price: price !== undefined && !isNaN(price) ? price : undefined,
-    imageUrl: imageUrls.length > 0 ? imageUrls[0] : (row.imageUrl?.trim() ?? ''),
-    imageUrls: imageUrls.length > 0 ? imageUrls : [],
+    imageUrl: imageUrls[0] ?? '',
+    imageUrls: imageUrls.length > 0 ? imageUrls : undefined,
     stockStatus: (['In Stock', 'Out of Stock', 'Pre-Order'].includes(row.stockStatus?.trim() ?? '')
       ? (row.stockStatus!.trim() as Product['stockStatus'])
       : 'In Stock'),

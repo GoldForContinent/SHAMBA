@@ -7,8 +7,8 @@ export interface Product {
   description: string;
   fullDescription?: string;
   price?: number;
-  imageUrl: string; // Main image (first image)
-  imageUrls: string[]; // Additional images for gallery
+  imageUrl: string; // Main image
+  imageUrls?: string[]; // Additional images for gallery
   stockStatus: 'In Stock' | 'Out of Stock' | 'Pre-Order';
   featured?: boolean;
   origin?: string;

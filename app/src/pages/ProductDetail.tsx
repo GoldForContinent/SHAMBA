@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router';
 import { FiMessageCircle, FiArrowLeft, FiMapPin, FiPackage, FiCheckCircle, FiGrid, FiTruck } from 'react-icons/fi';
 import ScrollReveal from '@/components/ui-custom/ScrollReveal';
@@ -11,8 +11,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 export default function ProductDetail() {
   const { slug } = useParams<{ slug: string }>();
   const { products, loading, error } = useProducts();
-  const [mainImage, setMainImage] = useState(product?.imageUrl || '');
-  
+
   const product = useMemo(() => {
     if (!slug || loading) return undefined;
     return products.find((p) => p.slug === slug);
@@ -29,6 +28,22 @@ export default function ProductDetail() {
     if (!product) return undefined;
     return categories.find((c) => c.name === product.category)?.slug;
   }, [product]);
+
+  // Combine main image + additional images into one gallery (deduplicated)
+  const gallery = useMemo(() => {
+    if (!product) return [];
+    const all = [product.imageUrl, ...(product.imageUrls ?? [])].filter(Boolean);
+    return Array.from(new Set(all));
+  }, [product]);
+
+  const [mainImage, setMainImage] = useState<string>('');
+
+  // Reset the selected image whenever the product (or its gallery) changes
+  useEffect(() => {
+    setMainImage(gallery[0] ?? '');
+  }, [gallery]);
+
+  const activeImage = mainImage || gallery[0] || '';
 
   const getStockBadgeClasses = (status: string) => {
     switch (status) {
@@ -153,31 +168,40 @@ export default function ProductDetail() {
 
           {/* Top: Image + Quick Info + CTA */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12">
-            {/* Product Image */}
+            {/* Product Image Gallery */}
             <ScrollReveal>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              <div className="lg:sticky lg:top-24">
                 {/* Main Image */}
-                <div className="lg:col-span-1">
-                  <div className="bg-white rounded-2xl overflow-hidden shadow-card aspect-square lg:sticky lg:top-24">
-                    <img
-                      src={mainImage}
-                      alt={product.productName}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                <div className="bg-white rounded-2xl overflow-hidden shadow-card aspect-square">
+                  <img
+                    src={activeImage}
+                    alt={product.productName}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
-                {/* Additional Images Gallery */}
-                {product.imageUrls.length > 0 && (
-                  <div className="lg:col-span-1 space-y-2">
-                    {product.imageUrls.map((imgUrl, i) => (
-                      <img
+                {/* Thumbnail strip below the main image */}
+                {gallery.length > 1 && (
+                  <div className="grid grid-cols-5 gap-3 mt-4">
+                    {gallery.map((imgUrl, i) => (
+                      <button
                         key={i}
-                        src={imgUrl}
-                        alt={`${product.productName} additional image ${i + 1}`}
-                        className="w-full h-24 object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                        type="button"
                         onClick={() => setMainImage(imgUrl)}
-                      />
+                        aria-label={`View image ${i + 1} of ${product.productName}`}
+                        className={`aspect-square rounded-lg overflow-hidden border-2 transition-all ${
+                          activeImage === imgUrl
+                            ? 'border-[#1F4A3E] ring-1 ring-[#1F4A3E]/30'
+                            : 'border-transparent hover:border-[#C79A3E]/60 opacity-80 hover:opacity-100'
+                        }`}
+                      >
+                        <img
+                          src={imgUrl}
+                          alt={`${product.productName} thumbnail ${i + 1}`}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </button>
                     ))}
                   </div>
                 )}
@@ -407,41 +431,6 @@ export default function ProductDetail() {
           </div>
         </div>
       </section>
-
-      {/* Product Image Gallery */}
-      {product.imageUrl || product.imageUrls.length > 0 && (
-        <section className="py-8 sm:py-12 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <ScrollReveal>
-              <h2 className="font-heading font-bold text-xl sm:text-2xl text-text-primary mb-4">
-                Product Images
-              </h2>
-            </ScrollReveal>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-              <div>
-                <div className="bg-white rounded-2xl overflow-hidden shadow-card aspect-square">
-                  <img
-                    src={mainImage}
-                    alt={product.productName}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <p className="font-ui text-xs text-text-secondary text-center py-2">Main Image</p>
-              </div>
-              {product.imageUrls.map((imgUrl, i) => (
-                <div key={i}>
-                  <img
-                    src={imgUrl}
-                    alt={`${product.productName} gallery image ${i + 1}`}
-                    className="w-full h-24 object-cover cursor-pointer hover:opacity-70 transition-opacity"
-                  />
-                  <p className="font-ui text-xs text-text-secondary text-center pt-1">Additional ${i + 1}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* Related Products */}
       {relatedProducts.length > 0 && (
