@@ -253,10 +253,10 @@ export const companyInfo = {
   name: 'AgroWorldHub',
   tagline: 'Your Trusted Manufacturer & Sourcing Partner in East Africa',
   description: 'AgroWorldHub is a premium agricultural trading company based in Nairobi, Kenya. We specialize in sourcing, processing, and exporting high-quality agricultural products to clients worldwide.',
-  address: 'L.R. No. 330/210, Mombasa Road, Nairobi, Kenya',
-  phone: '+254 791 312 250',
+  address: 'Ngong Road, Nairobi, Kenya',
+  phone: '+254 752 448 343',
   email: 'info@agroworldhub.com',
-  whatsappNumber: '254791312250',
+  whatsappNumber: '254752448343',
   social: {
     facebook: '#',
     instagram: '#',

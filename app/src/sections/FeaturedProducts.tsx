@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useMemo } from 'react';
 import { Link } from 'react-router';
 import { FiArrowRight, FiArrowLeft, FiMessageCircle } from 'react-icons/fi';
 import ScrollReveal from '@/components/ui-custom/ScrollReveal';
@@ -10,7 +10,13 @@ export default function FeaturedProducts() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const { products, loading, error } = useProducts();
 
-  const featuredProducts = products.filter((p) => p.featured);
+  // Featured products, with Hides & Skins always shown first
+  const featuredProducts = useMemo(() => {
+    const featured = products.filter((p) => p.featured);
+    const priority = featured.filter((p) => p.category === 'Hides & Skins');
+    const rest = featured.filter((p) => p.category !== 'Hides & Skins');
+    return [...priority, ...rest];
+  }, [products]);
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {

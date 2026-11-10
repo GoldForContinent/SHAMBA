@@ -2,6 +2,14 @@ import type { Product, Category } from '@/types';
 
 export const categories: Category[] = [
   {
+    id: 6,
+    name: 'Hides & Skins',
+    slug: 'hides-skins',
+    description: 'Ethically sourced animal hides and skins for leather and textile industries.',
+    imageUrl: 'https://puregrowthagri.com/images/rawhides2.jpg',
+    productCount: 0,
+  },
+  {
     id: 1,
     name: 'Sisal Fiber',
     slug: 'sisal-fiber',
@@ -40,14 +48,6 @@ export const categories: Category[] = [
     description: 'Hand-selected nuts and seeds from ethical suppliers across the region.',
     imageUrl: 'https://puregrowthagri.com/images/cashew1.jpg',
     productCount: 2,
-  },
-  {
-    id: 6,
-    name: 'Hides & Skins',
-    slug: 'hides-skins',
-    description: 'Ethically sourced animal hides and skins for leather and textile industries.',
-    imageUrl: 'https://puregrowthagri.com/images/rawhides2.jpg',
-    productCount: 0,
   },
   {
     id: 7,
