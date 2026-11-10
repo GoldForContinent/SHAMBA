@@ -1,9 +1,22 @@
 import { useState } from 'react';
-import { FiMapPin, FiPhone, FiMail, FiClock, FiSend, FiCheckCircle, FiMessageCircle } from 'react-icons/fi';
+import { FiMapPin, FiPhone, FiMail, FiClock, FiCheckCircle, FiMessageCircle } from 'react-icons/fi';
 import ScrollReveal from '@/components/ui-custom/ScrollReveal';
 import { companyInfo } from '@/data/siteData';
 import { getWhatsAppLink } from '@/lib/whatsapp';
 import type { ContactFormData } from '@/types';
+
+const CATEGORY_LABELS: Record<string, string> = {
+  'oils-fats': 'Oils & Fats',
+  'coffee': 'Coffee',
+  'cereals-pulses': 'Cereals & Pulses',
+  'nuts-seeds': 'Nuts & Seeds',
+  'spices-herbs': 'Spices & Herbs',
+  'fruits-vegetables': 'Fruits & Vegetables',
+  'fertilizer': 'Fertilizer',
+  'hides-skins': 'Hides & Skins',
+  'sisal-fiber': 'Sisal Fiber',
+  'other': 'Other / Not Sure',
+};
 
 export default function Contact() {
   const [formData, setFormData] = useState<ContactFormData>({
@@ -36,8 +49,28 @@ export default function Contact() {
     if (!validate()) return;
 
     setIsSubmitting(true);
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
+
+    // Build a formatted WhatsApp message from the form data
+    const lines = [
+      '*New Inquiry from AgroWorldHub Website*',
+      '',
+      `*Name:* ${formData.fullName.trim()}`,
+      `*Email:* ${formData.email.trim()}`,
+      `*Phone:* ${formData.phone.trim()}`,
+    ];
+    if (formData.productInterest) {
+      lines.push(`*Product Interest:* ${CATEGORY_LABELS[formData.productInterest] ?? formData.productInterest}`);
+    }
+    lines.push('', '*Message:*', formData.message.trim());
+
+    const whatsappUrl = `https://wa.me/${companyInfo.whatsappNumber}?text=${encodeURIComponent(lines.join('\n'))}`;
+
+    // Brief pause so the user sees the "Sending..." state before WhatsApp opens
+    await new Promise(resolve => setTimeout(resolve, 800));
+
+    // Open WhatsApp with the pre-filled message in a new tab
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+
     setIsSubmitting(false);
     setIsSubmitted(true);
   };
@@ -89,20 +122,31 @@ export default function Contact() {
                       <FiCheckCircle size={32} className="text-green-600" />
                     </div>
                     <h3 className="font-heading font-bold text-xl text-text-primary mb-2">
-                      Message Sent Successfully
+                      Inquiry Sent to WhatsApp
                     </h3>
                     <p className="font-body text-text-secondary mb-6">
-                      Thank you for reaching out. Our team will get back to you within 24 hours.
+                      WhatsApp has opened in a new tab with your message. Just press <strong>send</strong> there to complete your inquiry. If the tab didn't open, use the button below.
                     </p>
-                    <button
-                      onClick={() => {
-                        setIsSubmitted(false);
-                        setFormData({ fullName: '', email: '', phone: '', productInterest: '', message: '' });
-                      }}
-                      className="px-5 py-2.5 bg-[#1F4A3E] text-white font-ui font-medium rounded-lg hover:bg-[#16382F] transition-colors"
-                    >
-                      Send Another Message
-                    </button>
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                      <button
+                        onClick={() => {
+                          setIsSubmitted(false);
+                          setFormData({ fullName: '', email: '', phone: '', productInterest: '', message: '' });
+                        }}
+                        className="px-5 py-2.5 bg-[#1F4A3E] text-white font-ui font-medium rounded-lg hover:bg-[#16382F] transition-colors"
+                      >
+                        Send Another Message
+                      </button>
+                      <a
+                        href={getWhatsAppLink()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#25D366] text-white font-ui font-medium rounded-lg hover:bg-[#1DA851] transition-colors"
+                      >
+                        <FiMessageCircle size={16} />
+                        Chat on WhatsApp
+                      </a>
+                    </div>
                   </div>
                 ) : (
                   <>
@@ -231,20 +275,23 @@ export default function Contact() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#1F4A3E] text-white font-ui font-semibold rounded-lg hover:bg-[#16382F] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                        className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#25D366] text-white font-ui font-semibold rounded-lg hover:bg-[#1DA851] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                       >
                         {isSubmitting ? (
                           <>
                             <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                            Sending...
+                            Opening WhatsApp...
                           </>
                         ) : (
                           <>
-                            <FiSend size={16} />
-                            Send Message
+                            <FiMessageCircle size={16} />
+                            Send via WhatsApp
                           </>
                         )}
                       </button>
+                      <p className="text-center font-ui text-xs text-text-secondary">
+                        Your inquiry will open in WhatsApp — just press send to deliver it to our team.
+                      </p>
                     </form>
                   </>
                 )}
