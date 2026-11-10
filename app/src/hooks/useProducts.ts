@@ -44,10 +44,19 @@ export function useProducts(category?: string): UseProductsResult {
   }, []);
 
   const products = useMemo(() => {
-    if (!category || category === 'all') return allProducts;
-    return allProducts.filter(
-      (p) => p.category.toLowerCase() === category.toLowerCase()
-    );
+    const list = category && category !== 'all'
+      ? allProducts.filter(
+          (p) => p.category.toLowerCase() === category.toLowerCase()
+        )
+      : allProducts;
+
+    // Hides & Skins products always listed first; everything else keeps
+    // its original (sheet) order behind them. Stable sort preserves order.
+    return [...list].sort((a, b) => {
+      const aPriority = a.category === 'Hides & Skins' ? 0 : 1;
+      const bPriority = b.category === 'Hides & Skins' ? 0 : 1;
+      return aPriority - bPriority;
+    });
   }, [allProducts, category]);
 
   return { products, loading, error };

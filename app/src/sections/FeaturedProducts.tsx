@@ -10,13 +10,11 @@ export default function FeaturedProducts() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const { products, loading, error } = useProducts();
 
-  // Featured products, with Hides & Skins always shown first
-  const featuredProducts = useMemo(() => {
-    const featured = products.filter((p) => p.featured);
-    const priority = featured.filter((p) => p.category === 'Hides & Skins');
-    const rest = featured.filter((p) => p.category !== 'Hides & Skins');
-    return [...priority, ...rest];
-  }, [products]);
+  // Featured products (Hides & Skins first — ordering handled by useProducts)
+  const featuredProducts = useMemo(
+    () => products.filter((p) => p.featured),
+    [products]
+  );
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
