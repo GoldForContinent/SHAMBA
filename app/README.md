@@ -19,6 +19,46 @@ These are linked from the **Certifications & Compliance** section of the Quality
 (`/quality#certifications`), where visitors can view or download them. Keep the filenames
 unchanged when replacing a document.
 
+## Hero Images
+
+The homepage hero is a five-slide carousel defined in `app/src/sections/Hero.tsx`. Hides and
+skins lead — one slide per traded form (wet blue, wet salted, sun-dried, field-dried) — while
+maize is deliberately kept as the final slide:
+
+| Slide | File | Source | Licence |
+|-------|------|--------|---------|
+| 1 — Hides & Skins (wet blue) | `public/images/hero/wet-blue.jpg` | [Myousry6666, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Leather_tanneries_(40).jpg) | CC BY-SA 4.0 |
+| 2 — Hides & Skins (wet salted) | `public/images/hero/wet-salted.jpg` | [OUMAROU OB, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Mise_en_eau_de_la_peau_pour_la_transformation_en_cuire_au_centre_pilote_de_traitement_du_cuire_de_Maroua_au_Cameroun_01.jpg) | CC0 (public domain) |
+| 3 — Hides & Skins (sun-dried) | `public/images/hero/hides-stretched.jpg` | [Enda012, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Stretched_Cowhide_Skin.jpg) | CC BY 4.0 |
+| 4 — Hides & Skins (field-dried) | `public/images/hero/hides-kenya.jpg` | [Lebu Ayiga, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Animal_hides_drying_at_Mai_Mahiu_Viewpoint,_Great_Rift_Valley,_Kenya.jpg) | CC BY 4.0 |
+| 5 — Cereals & Pulses | Unsplash (remote URL) | [Unsplash](https://images.unsplash.com/photo-1625246333195-78d9c38ad449) | Unsplash Licence |
+
+All four Wikimedia images are cropped for the hero and must keep their attribution, which is
+shown under the carousel controls. When Dijon Prime's own product photography is available,
+replace the files in `app/public/images/hero/` and update the credit details in `Hero.tsx`.
+
+### Sourcing further product photography
+
+Free, commercially usable images of the traded forms (verified as of this writing):
+
+| Subject | Source | Licence |
+|---------|--------|---------|
+| Wet blue hides | [Leather tanneries (40) — Commons](https://commons.wikimedia.org/wiki/File:Leather_tanneries_(40).jpg) | CC BY-SA 4.0 |
+| Wet blue hides | [Tannery in Brazil, Cáceres — Flickr](https://www.flickr.com/photos/28488531@N08/3729841638/) | All rights reserved — ask the photographer before use |
+| Wet blue hides on a truck | [Kanpur to Lucknow — Flickr](https://www.flickr.com/photos/10171412@N02/11129286016/) | All rights reserved — ask the photographer before use |
+| Wet blue hides | [A+B HIDES product photo](https://www.aplusb-hides.de/wp-content/uploads/2018/05/wetblue.jpg) | Copyright — permission required |
+| Wet salted hides | [Salted hides — A+B HIDES](https://www.aplusb-hides.de/wp-content/uploads/2018/08/05.jpg) | Copyright — permission required |
+| Wet salted skins | [Salted pelts — Flickr](https://www.flickr.com/photos/baalands/48816573741/) | All rights reserved — ask the photographer before use |
+| Salting skins | [Salting pelts — Flickr](https://www.flickr.com/photos/baalands/48816715377/) | All rights reserved — ask the photographer before use |
+| Tannery processing (CC0 set) | [Maroua tannery — Commons](https://commons.wikimedia.org/wiki/Category:Tanneries_in_Cameroon) | CC0 |
+| Tanning stages | [Niger tannery — Commons](https://commons.wikimedia.org/wiki/Category:Tanneries_in_Niger) | CC BY-SA 4.0 |
+| Tannery stacks of leather | [Leather in Egypt — Commons](https://commons.wikimedia.org/wiki/Category:Leather_in_Egypt) | CC BY-SA 4.0 |
+
+Paid stock alternatives if Dijon Prime wants guaranteed subject-accurate photography:
+[Shutterstock — wet blue leather](https://www.shutterstock.com/search/wet-blue-leather),
+[Alamy — wet blue hides](https://www.alamy.com/search.html?qt=wet%20blue%20hides),
+[Adobe Stock — salted hides](https://stock.adobe.com/search?k=salted+hides).
+
 ## Tech Stack
 
 - **React 19** with TypeScript (strict mode)

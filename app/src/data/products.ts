@@ -6,7 +6,7 @@ export const categories: Category[] = [
     name: 'Hides & Skins',
     slug: 'hides-skins',
     description: 'Ethically sourced animal hides and skins for leather and textile industries.',
-    imageUrl: 'https://puregrowthagri.com/images/rawhides2.jpg',
+    imageUrl: '/images/hero/hides-category.jpg',
     productCount: 0,
   },
   {
