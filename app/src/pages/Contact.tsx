@@ -52,7 +52,7 @@ export default function Contact() {
 
     // Build a formatted WhatsApp message from the form data
     const lines = [
-      '*New Inquiry from AgroWorldHub Website*',
+      '*New Inquiry from Dijon Prime Agro Limited Website*',
       '',
       `*Name:* ${formData.fullName.trim()}`,
       `*Email:* ${formData.email.trim()}`,
@@ -384,7 +384,7 @@ export default function Contact() {
                         <FiMapPin size={24} className="text-[#1F4A3E]" />
                       </div>
                       <p className="font-heading font-semibold text-base text-text-primary mb-1">
-                        AgroWorldHub
+                        Dijon Prime Agro Limited
                       </p>
                       <p className="font-ui text-sm text-text-secondary">
                         {companyInfo.address}

@@ -94,7 +94,7 @@ We encourage you to review this page periodically to stay informed about how we 
     title: '12. Contact Us',
     content: `If you have any questions, concerns, or requests regarding this Privacy Policy or how we handle your personal data, please contact us:
 
-**AgroWorldHub**
+**Dijon Prime Agro Limited**
 ${companyInfo.address}
 Email: ${companyInfo.email}
 Phone: ${companyInfo.phone}`,
@@ -127,7 +127,7 @@ export default function PrivacyPolicy() {
               Privacy Policy
             </h1>
             <p className="font-body text-base sm:text-lg text-white/70 max-w-2xl">
-              Your privacy matters to us. This policy explains how AgroWorldHub collects, uses, and protects your personal information when you interact with our website and services.
+              Your privacy matters to us. This policy explains how Dijon Prime Agro Limited collects, uses, and protects your personal information when you interact with our website and services.
             </p>
             <p className="font-ui text-sm text-white/50 mt-4">
               Last Updated: July 19, 2026
@@ -141,7 +141,7 @@ export default function PrivacyPolicy() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <p className="font-body text-base text-text-secondary leading-relaxed mb-10">
-              At AgroWorldHub, we are committed to safeguarding your personal information and maintaining your trust. This Privacy Policy describes how we collect, use, store, and share data when you visit our website, use our services, or communicate with us.
+              At Dijon Prime Agro Limited, we are committed to safeguarding your personal information and maintaining your trust. This Privacy Policy describes how we collect, use, store, and share data when you visit our website, use our services, or communicate with us.
             </p>
           </ScrollReveal>
 

@@ -101,3 +101,11 @@ export interface SupplyChainStep {
   description: string;
   icon: string;
 }
+
+export interface Certificate {
+  id: number;
+  title: string;
+  issuer: string;
+  description: string;
+  file: string;
+}

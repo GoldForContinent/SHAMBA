@@ -358,7 +358,7 @@ export default function PrivateLabel() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════
-          WHY AgroWorldHub — Alternating dark/light cards
+          WHY DIJON PRIME — Alternating dark/light cards
       ═══════════════════════════════════════════════════════ */}
       <section ref={ref5} className="py-20 sm:py-28 lg:py-36 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -369,14 +369,14 @@ export default function PrivateLabel() {
             className="mb-14 sm:mb-18"
           >
             <span className="text-[#C79A3E] text-sm font-ui font-semibold uppercase tracking-wider">
-              Why AgroWorldHub
+              Why Dijon Prime
             </span>
             <h2
               className="font-heading font-bold text-text-primary mt-3 leading-tight"
               style={{ fontSize: 'clamp(2rem, 4.5vw, 3.5rem)' }}
             >
               Why Choose{' '}
-              <span className="text-[#1F4A3E]">AgroWorldHub</span>{' '}
+              <span className="text-[#1F4A3E]">Dijon Prime</span>{' '}
               <br className="hidden sm:block" />
               for Your Private Label
             </h2>

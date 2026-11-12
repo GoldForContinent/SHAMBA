@@ -19,7 +19,7 @@ export default function Logo({ variant = 'compact', light = false, className = '
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={className}
-        aria-label="AgroWorldHub"
+        aria-label="Dijon Prime Agro Limited"
       >
         <defs>
           <linearGradient id={`${uid}leafGrad`} x1="0" y1="0" x2="1" y2="1">
@@ -67,7 +67,7 @@ export default function Logo({ variant = 'compact', light = false, className = '
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={className}
-        aria-label="AgroWorldHub"
+        aria-label="Dijon Prime Agro Limited"
       >
         <defs>
           <linearGradient id={`${uid}leafGrad`} x1="0" y1="0" x2="1" y2="1">
@@ -111,36 +111,37 @@ export default function Logo({ variant = 'compact', light = false, className = '
         {/* Brand name */}
         <text
           x="130"
-          y="48"
-          fontSize="42"
+          y="40"
+          fontSize="38"
           fontFamily="Montserrat, Poppins, Arial, sans-serif"
           fontWeight="700"
           fill={textColor}
           letterSpacing="0.5"
         >
-          AgroWorld
+          DIJON PRIME
         </text>
         <text
-          x="383"
-          y="48"
-          fontSize="42"
+          x="132"
+          y="68"
+          fontSize="20"
           fontFamily="Montserrat, Poppins, Arial, sans-serif"
           fontWeight="700"
           fill="#C99A16"
+          letterSpacing="6"
         >
-          Hub
+          AGRO LIMITED
         </text>
 
         {/* Tagline */}
         <text
           x="132"
-          y="78"
-          fontSize="11"
+          y="96"
+          fontSize="9.5"
           fontFamily="Inter, Arial, sans-serif"
-          letterSpacing="2.5"
+          letterSpacing="2.2"
           fill={taglineColor}
         >
-          CONNECTING FARMERS  •  MARKETS  •  OPPORTUNITIES
+          SOURCING  •  QUALITY  •  DELIVERY
         </text>
       </svg>
     );
@@ -153,7 +154,7 @@ export default function Logo({ variant = 'compact', light = false, className = '
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
-      aria-label="AgroWorldHub"
+      aria-label="Dijon Prime Agro Limited"
     >
       <defs>
         <linearGradient id={`${uid}leafGrad`} x1="0" y1="0" x2="1" y2="1">
@@ -197,40 +198,41 @@ export default function Logo({ variant = 'compact', light = false, className = '
       {/* Brand name */}
       <text
         x="170"
-        y="78"
+        y="66"
         fontSize="48"
         fontFamily="Montserrat, Poppins, Arial, sans-serif"
         fontWeight="700"
         fill={textColor}
         letterSpacing="0.5"
       >
-        AgroWorld
+        DIJON PRIME
       </text>
       <text
-        x="460"
-        y="78"
-        fontSize="48"
+        x="172"
+        y="98"
+        fontSize="23"
         fontFamily="Montserrat, Poppins, Arial, sans-serif"
         fontWeight="700"
         fill="#C99A16"
+        letterSpacing="7"
       >
-        Hub
+        AGRO LIMITED
       </text>
 
       {/* Tagline */}
       <text
         x="172"
-        y="112"
-        fontSize="14"
+        y="126"
+        fontSize="12"
         fontFamily="Inter, Arial, sans-serif"
-        letterSpacing="3"
+        letterSpacing="2.8"
         fill={taglineColor}
       >
-        CONNECTING FARMERS  •  MARKETS  •  OPPORTUNITIES
+        SOURCING  •  QUALITY  •  DELIVERY
       </text>
 
       {/* Accent line */}
-      <rect x="172" y="124" width="420" height="2.5" rx="2" fill={`url(#${uid}goldGrad)`} />
+      <rect x="172" y="140" width="420" height="2.5" rx="2" fill={`url(#${uid}goldGrad)`} />
     </svg>
   );
 }

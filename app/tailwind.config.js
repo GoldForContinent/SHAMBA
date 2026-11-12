@@ -38,7 +38,7 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // SHAMBAMALL Brand Colors
+        // Dijon Prime Agro Limited Brand Colors
         brand: {
           primary: "#1F4A3E",
           secondary: "#C79A3E",

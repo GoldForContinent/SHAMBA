@@ -5,13 +5,13 @@ import { companyInfo } from '@/data/siteData';
 const sections = [
   {
     title: '1. Acceptance of Terms',
-    content: `By accessing or using the AgroWorldHub website (agroworldhub.com) and our services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our website or services.
+    content: `By accessing or using the Dijon Prime Agro Limited website and our services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our website or services.
 
 These terms apply to all visitors, users, and clients who access or use our website and services.`,
   },
   {
-    title: '2. About AgroWorldHub',
-    content: `AgroWorldHub is a premium agricultural trading company registered and operating in Nairobi, Kenya. We specialize in sourcing, processing, and exporting high-quality agricultural products to clients worldwide. Our services include food ingredient sourcing, quality assurance, production coordination, logistics, and private label solutions.`,
+    title: '2. About Dijon Prime Agro Limited',
+    content: `Dijon Prime Agro Limited is a premium agricultural trading company registered and operating in Nairobi, Kenya. We specialize in sourcing, processing, and exporting high-quality agricultural products to clients worldwide. Our services include food ingredient sourcing, quality assurance, production coordination, logistics, and private label solutions.`,
   },
   {
     title: '3. Products and Services',
@@ -23,7 +23,7 @@ These terms apply to all visitors, users, and clients who access or use our webs
   },
   {
     title: '4. Orders and Agreements',
-    content: `Placing an inquiry or order through our website or via direct communication does not constitute a binding contract. An order becomes binding only upon written confirmation from AgroWorldHub, which includes agreed pricing, quantities, specifications, delivery terms, and payment arrangements.
+    content: `Placing an inquiry or order through our website or via direct communication does not constitute a binding contract. An order becomes binding only upon written confirmation from Dijon Prime Agro Limited, which includes agreed pricing, quantities, specifications, delivery terms, and payment arrangements.
 
 We reserve the right to decline any order at our discretion, including but not limited to cases where:
 - Product specifications cannot be met to our quality standards.
@@ -43,25 +43,25 @@ Payment terms are established on a per-order basis as part of the order confirma
   },
   {
     title: '6. Shipping and Delivery',
-    content: `Shipping terms are agreed upon for each order individually. While we make every effort to ensure timely delivery, AgroWorldHub is not liable for delays caused by circumstances beyond our reasonable control, including but not limited to customs clearance delays, shipping carrier disruptions, natural disasters, government actions, or port congestion.
+    content: `Shipping terms are agreed upon for each order individually. While we make every effort to ensure timely delivery, Dijon Prime Agro Limited is not liable for delays caused by circumstances beyond our reasonable control, including but not limited to customs clearance delays, shipping carrier disruptions, natural disasters, government actions, or port congestion.
 
 Risk of loss and title for products transfer to the buyer in accordance with the agreed Incoterms specified in the order confirmation.`,
   },
   {
     title: '7. Quality Assurance',
-    content: `AgroWorldHub maintains rigorous quality control processes across all stages of sourcing, handling, and delivery. However, all products are sold on the understanding that the buyer has satisfied themselves as to the suitability of the products for their intended purpose.
+    content: `Dijon Prime Agro Limited maintains rigorous quality control processes across all stages of sourcing, handling, and delivery. However, all products are sold on the understanding that the buyer has satisfied themselves as to the suitability of the products for their intended purpose.
 
 Our quality statements, certifications, and standards as presented on our website reflect our current practices and may be updated as processes evolve.`,
   },
   {
     title: '8. Intellectual Property',
-    content: `All content on this website, including but not limited to text, graphics, logos, images, product descriptions, and software, is the property of AgroWorldHub or its content suppliers and is protected by applicable copyright, trademark, and intellectual property laws.
+    content: `All content on this website, including but not limited to text, graphics, logos, images, product descriptions, and software, is the property of Dijon Prime Agro Limited or its content suppliers and is protected by applicable copyright, trademark, and intellectual property laws.
 
-You may not reproduce, distribute, modify, or create derivative works from any content on this website without prior written permission from AgroWorldHub.`,
+You may not reproduce, distribute, modify, or create derivative works from any content on this website without prior written permission from Dijon Prime Agro Limited.`,
   },
   {
     title: '9. Limitation of Liability',
-    content: `To the maximum extent permitted by applicable law, AgroWorldHub shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from or related to:
+    content: `To the maximum extent permitted by applicable law, Dijon Prime Agro Limited shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from or related to:
 
 - The use of or inability to use our website.
 - Any inaccuracies in website content or product information.
@@ -72,11 +72,11 @@ Our total liability for any claim arising from or related to our services shall 
   },
   {
     title: '10. Indemnification',
-    content: `You agree to indemnify, defend, and hold harmless AgroWorldHub, its directors, employees, and partners from any claims, losses, damages, liabilities, costs, and expenses (including reasonable legal fees) arising from your use of our website, violation of these terms, or violation of any third-party rights.`,
+    content: `You agree to indemnify, defend, and hold harmless Dijon Prime Agro Limited, its directors, employees, and partners from any claims, losses, damages, liabilities, costs, and expenses (including reasonable legal fees) arising from your use of our website, violation of these terms, or violation of any third-party rights.`,
   },
   {
     title: '11. Force Majeure',
-    content: `AgroWorldHub shall not be held liable for any failure or delay in performing our obligations under these terms if such failure or delay results from circumstances beyond our reasonable control, including but not limited to acts of God, war, terrorism, pandemic, government regulations, natural disasters, labor disputes, or disruption to supply chains and transportation networks.`,
+    content: `Dijon Prime Agro Limited shall not be held liable for any failure or delay in performing our obligations under these terms if such failure or delay results from circumstances beyond our reasonable control, including but not limited to acts of God, war, terrorism, pandemic, government regulations, natural disasters, labor disputes, or disruption to supply chains and transportation networks.`,
   },
   {
     title: '12. Governing Law and Disputes',
@@ -92,7 +92,7 @@ We encourage you to review this page periodically to stay informed of any change
     title: '14. Contact',
     content: `If you have any questions about these Terms of Service, please contact us:
 
-**AgroWorldHub**
+**Dijon Prime Agro Limited**
 ${companyInfo.address}
 Email: ${companyInfo.email}
 Phone: ${companyInfo.phone}`,
@@ -139,7 +139,7 @@ export default function TermsOfService() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <p className="font-body text-base text-text-secondary leading-relaxed mb-10">
-              These Terms of Service govern your use of the AgroWorldHub website and services. By using our website, placing inquiries, or engaging our services, you agree to these terms.
+              These Terms of Service govern your use of the Dijon Prime Agro Limited website and services. By using our website, placing inquiries, or engaging our services, you agree to these terms.
             </p>
           </ScrollReveal>
 

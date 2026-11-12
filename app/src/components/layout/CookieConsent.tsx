@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiShield, FiX } from 'react-icons/fi';
 
-const COOKIE_CONSENT_KEY = 'agroworldhub_cookie_consent';
+const COOKIE_CONSENT_KEY = 'dijonprime_cookie_consent';
 
 export default function CookieConsent() {
   const [visible, setVisible] = useState(false);

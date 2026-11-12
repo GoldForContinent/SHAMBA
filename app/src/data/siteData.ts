@@ -1,4 +1,4 @@
-import type { NavLink, WhyChooseUsItem, CoreValue, StatItem, StatCard, QualityStandard, SupplyChainStep, ServiceCard, CommitmentStep } from '@/types';
+import type { NavLink, WhyChooseUsItem, CoreValue, StatItem, StatCard, QualityStandard, SupplyChainStep, ServiceCard, CommitmentStep, Certificate } from '@/types';
 
 export const navLinks: NavLink[] = [
   { label: 'Home', href: '/' },
@@ -18,6 +18,7 @@ export const navLinks: NavLink[] = [
     children: [
       { label: 'Services', href: '/quality/services' },
       { label: 'Our Quality', href: '/quality' },
+      { label: 'Certifications', href: '/quality#certifications' },
     ],
   },
   { label: 'Contact', href: '/contact' },
@@ -249,10 +250,29 @@ export const commitmentSteps: CommitmentStep[] = [
   },
 ];
 
+export const certificates: Certificate[] = [
+  {
+    id: 1,
+    title: 'Certificate of Incorporation',
+    issuer: 'Business Registration Service, Republic of Kenya',
+    description:
+      'Confirms that Dijon Prime Agro Limited is duly incorporated as a limited liability company in Kenya and is authorised to carry on business.',
+    file: '/documents/certificate-of-incorporation.pdf',
+  },
+  {
+    id: 2,
+    title: 'Name Search & Reservation',
+    issuer: 'Business Registration Service, Republic of Kenya',
+    description:
+      'Official confirmation that the company name was searched and reserved before incorporation, issued in the name of Dijon Prime Agro Limited.',
+    file: '/documents/name-search-and-reservation.pdf',
+  },
+];
+
 export const companyInfo = {
-  name: 'AgroWorldHub',
+  name: 'Dijon Prime Agro Limited',
   tagline: 'Your Trusted Manufacturer & Sourcing Partner in East Africa',
-  description: 'AgroWorldHub is a premium agricultural trading company based in Nairobi, Kenya. We specialize in sourcing, processing, and exporting high-quality agricultural products to clients worldwide.',
+  description: 'Dijon Prime Agro Limited is a premium agricultural trading company based in Nairobi, Kenya. We specialize in sourcing, processing, and exporting high-quality agricultural products to clients worldwide.',
   address: 'Ngong Road, Nairobi, Kenya',
   phone: '+254 752 448 343',
   email: 'info@agroworldhub.com',

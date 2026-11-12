@@ -219,7 +219,7 @@ export default function Navbar() {
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
-  }, [location.pathname]);
+  }, [location.pathname, location.hash]);
 
   useEffect(() => {
     if (isMobileMenuOpen) {

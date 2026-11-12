@@ -1,16 +1,29 @@
-# SHAMBAMALL
+# DIJON PRIME AGRO LIMITED
 
 Premium Agricultural Trading E-Commerce Frontend
 
 ## Overview
 
-SHAMBAMALL is a boutique agricultural trading company based in Nairobi, Kenya. This project is the complete frontend for their premium e-commerce and informational website, designed to communicate trust, quality, and professionalism to global buyers.
+Dijon Prime Agro Limited is a boutique agricultural trading company based in Nairobi, Kenya. This project is the complete frontend for their premium e-commerce and informational website, designed to communicate trust, quality, and professionalism to global buyers.
+
+## Company Documents
+
+The client-supplied registration documents are hosted in `app/public/documents/`:
+
+| File | Document |
+|------|----------|
+| `certificate-of-incorporation.pdf` | Certificate of Incorporation |
+| `name-search-and-reservation.pdf` | Name Search & Reservation |
+
+These are linked from the **Certifications & Compliance** section of the Quality page
+(`/quality#certifications`), where visitors can view or download them. Keep the filenames
+unchanged when replacing a document.
 
 ## Tech Stack
 
 - **React 19** with TypeScript (strict mode)
 - **Vite** for fast development and optimized builds
-- **Tailwind CSS 3.4** with custom SHAMBAMALL brand theme
+- **Tailwind CSS 3.4** with custom Dijon Prime Agro Limited brand theme
 - **React Router** for client-side routing
 - **Framer Motion** for scroll-reveal animations and transitions
 - **React Icons** (Feather icons) for consistent iconography
@@ -42,8 +55,7 @@ SHAMBAMALL is a boutique agricultural trading company based in Nairobi, Kenya. T
 | `/shop` | Shop | Category filters, product grid, pagination |
 | `/shop/:slug` | Product Detail | Product info, WhatsApp inquiry, related products |
 | `/what-we-do` | What We Do | Mission, supply chain, portfolio, sustainability |
-| `/quality` | Quality | Team, standards, certifications, disclaimer |
-| `/contact` | Contact | Form with validation, contact info, map placeholder |
+| `/quality` | Quality | Team, standards, certifications, disclaimer || `/contact` | Contact | Form with validation, contact info, map placeholder |
 
 ## Environment Variables
 

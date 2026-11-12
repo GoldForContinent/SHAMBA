@@ -121,7 +121,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-white/50 text-xs font-ui text-center sm:text-left">
-              &copy; {new Date().getFullYear()} AgroWorldHub. All rights reserved.
+              &copy; {new Date().getFullYear()} Dijon Prime Agro Limited. All rights reserved.
             </p>
             <div className="flex items-center gap-4">
               <Link to="/privacy-policy" className="text-white/50 hover:text-white/80 text-xs font-ui transition-colors">
@@ -130,6 +130,10 @@ export default function Footer() {
               <span className="text-white/20">|</span>
               <Link to="/terms-of-service" className="text-white/50 hover:text-white/80 text-xs font-ui transition-colors">
                 Terms of Service
+              </Link>
+              <span className="text-white/20">|</span>
+              <Link to="/quality#certifications" className="text-white/50 hover:text-white/80 text-xs font-ui transition-colors">
+                Certifications
               </Link>
               <span className="text-white/20 hidden sm:inline">|</span>
               <span className="text-white/50 text-xs font-ui hidden sm:inline">

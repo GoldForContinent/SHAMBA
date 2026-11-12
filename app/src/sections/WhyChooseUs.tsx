@@ -63,7 +63,7 @@ export default function WhyChooseUs() {
             <span className="text-[#1F4A3E]">Build a Business On</span>
           </h2>
           <p className="font-body text-base sm:text-lg text-text-secondary max-w-2xl mx-auto leading-relaxed">
-            Five reasons global buyers trust AgroWorldHub to deliver consistent quality, reliable timelines, and supply chains they can stand behind.
+            Five reasons global buyers trust Dijon Prime Agro Limited to deliver consistent quality, reliable timelines, and supply chains they can stand behind.
           </p>
         </motion.div>
 

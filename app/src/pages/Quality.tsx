@@ -12,8 +12,11 @@ import {
   FiAward,
   FiZap,
   FiUsers,
+  FiFileText,
+  FiDownload,
+  FiExternalLink,
 } from 'react-icons/fi';
-import { Link as RouterLink } from 'react-router';
+import { certificates } from '@/data/siteData';
 
 const qualityPromise = [
   { label: '100% Organic', icon: FiHeart },
@@ -56,6 +59,8 @@ export default function Quality() {
   const standardsInView = useInView(standardsRef, { once: true, margin: '-60px' });
   const statementRef = useRef(null);
   const statementInView = useInView(statementRef, { once: true, margin: '-60px' });
+  const certificationsRef = useRef(null);
+  const certificationsInView = useInView(certificationsRef, { once: true, margin: '-60px' });
   const responseRef = useRef(null);
   const responseInView = useInView(responseRef, { once: true, margin: '-60px' });
   const ctaRef = useRef(null);
@@ -121,12 +126,12 @@ export default function Quality() {
                   Our Services
                   <FiArrowRight size={16} />
                 </Link>
-                <RouterLink
-                  to="#quality-standards"
+                <Link
+                  to="/quality#quality-standards"
                   className="inline-flex items-center gap-2 px-6 py-3.5 bg-white/10 text-white font-ui font-semibold rounded-full hover:bg-white/15 transition-all duration-300 border border-white/15"
                 >
                   Explore Standards
-                </RouterLink>
+                </Link>
               </motion.div>
             </div>
           </div>
@@ -366,6 +371,124 @@ export default function Quality() {
                 </motion.div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════
+          CERTIFICATIONS — Registered documents, view & download
+      ═══════════════════════════════════════════════════════ */}
+      <section
+        ref={certificationsRef}
+        id="certifications"
+        className="bg-[#1F4A3E] py-20 sm:py-28 lg:py-32 relative overflow-hidden scroll-mt-20"
+      >
+        {/* Decorative */}
+        <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#C79A3E]/[0.08] rounded-full" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/[0.03] rounded-full -translate-x-1/3 translate-y-1/3" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 items-center">
+
+            {/* Copy */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={certificationsInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="text-[#C79A3E] text-sm font-ui font-semibold uppercase tracking-wider">
+                Certifications &amp; Compliance
+              </span>
+              <h2
+                className="font-heading font-bold text-white mt-3 mb-5 leading-tight"
+                style={{ fontSize: 'clamp(1.9rem, 4vw, 3rem)' }}
+              >
+                Registered.{' '}
+                <span className="text-[#C79A3E]">Verified.</span>{' '}
+                Accountable.
+              </h2>
+              <p className="font-body text-base text-white/70 leading-relaxed mb-6 max-w-lg">
+                Dijon Prime Agro Limited is a duly registered company in Kenya. Our
+                incorporation documents are available to view or download below, so buyers,
+                partners and tender reviewers can verify us before we ever ask for their trust.
+              </p>
+
+              <div className="inline-flex items-center gap-3 px-4 py-3 bg-white/[0.08] border border-white/10 rounded-xl">
+                <div className="w-10 h-10 bg-[#C79A3E]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <FiShield size={18} className="text-[#C79A3E]" />
+                </div>
+                <div>
+                  <p className="font-heading font-semibold text-white text-sm">
+                    Business Registration Service
+                  </p>
+                  <p className="font-ui text-xs text-white/50">
+                    Republic of Kenya — official documents
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Document cards */}
+            <div className="space-y-4">
+              {certificates.map((cert, idx) => (
+                <motion.div
+                  key={cert.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={certificationsInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.15 + idx * 0.12 }}
+                  className="bg-white rounded-2xl p-6 sm:p-7 shadow-lift"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-[#1F4A3E]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <FiFileText size={22} className="text-[#1F4A3E]" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-heading font-bold text-text-primary text-lg leading-snug">
+                        {cert.title}
+                      </h3>
+                      <p className="font-ui text-xs text-[#C79A3E] font-semibold uppercase tracking-wider mt-1 mb-3">
+                        {cert.issuer}
+                      </p>
+                      <p className="font-body text-sm text-text-secondary leading-relaxed mb-5">
+                        {cert.description}
+                      </p>
+                      <div className="flex flex-wrap items-center gap-3">
+                        <a
+                          href={cert.file}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#1F4A3E] text-white font-ui font-semibold text-sm rounded-full hover:bg-[#16382F] transition-colors"
+                        >
+                          View document
+                          <FiExternalLink size={14} />
+                        </a>
+                        <a
+                          href={cert.file}
+                          download
+                          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#F8F6F2] text-[#1F4A3E] font-ui font-semibold text-sm rounded-full hover:bg-[#EFEBE3] transition-colors border border-[#1F4A3E]/10"
+                        >
+                          Download PDF
+                          <FiDownload size={14} />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={certificationsInView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.45 }}
+                className="font-ui text-xs text-white/45 leading-relaxed pl-1"
+              >
+                Need certified copies for onboarding or a tender submission?{' '}
+                <Link to="/contact" className="text-[#C79A3E] hover:text-[#E0B65C] underline underline-offset-2">
+                  Contact our team
+                </Link>{' '}
+                and we will send them directly.
+              </motion.p>
+            </div>
           </div>
         </div>
       </section>
