@@ -33,9 +33,11 @@ maize is deliberately kept as the final slide:
 | 4 — Hides & Skins (field-dried) | `public/images/hero/hides-kenya.jpg` | [Lebu Ayiga, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Animal_hides_drying_at_Mai_Mahiu_Viewpoint,_Great_Rift_Valley,_Kenya.jpg) | CC BY 4.0 |
 | 5 — Cereals & Pulses | Unsplash (remote URL) | [Unsplash](https://images.unsplash.com/photo-1625246333195-78d9c38ad449) | Unsplash Licence |
 
-All four Wikimedia images are cropped for the hero and must keep their attribution, which is
-shown under the carousel controls. When Dijon Prime's own product photography is available,
-replace the files in `app/public/images/hero/` and update the credit details in `Hero.tsx`.
+All four Wikimedia images are cropped for the hero. Attribution details are kept in the
+`credit` field of each slide in `Hero.tsx` (currently not rendered publicly — restore the
+credit paragraph when the client is happy to show photo credits). When Dijon Prime's own
+product photography is available, replace the files in `app/public/images/hero/` and update
+the credit details in `Hero.tsx`.
 
 ### Sourcing further product photography
 

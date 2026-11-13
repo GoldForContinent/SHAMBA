@@ -288,39 +288,6 @@ export default function Hero() {
             </p>
           </motion.div>
 
-          <motion.p
-            key={`credit-${index}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4 }}
-            className="mt-3 text-[10px] leading-relaxed text-white/45"
-          >
-            {activeSlide.credit ? (
-              <>
-                Photo:{' '}
-                <a
-                  href={activeSlide.credit.sourceUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="underline decoration-white/30 underline-offset-2 transition hover:text-white/70"
-                >
-                  {activeSlide.credit.author}
-                </a>{' '}
-                / Wikimedia Commons,{' '}
-                <a
-                  href={activeSlide.credit.licenseUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="underline decoration-white/30 underline-offset-2 transition hover:text-white/70"
-                >
-                  {activeSlide.credit.license}
-                </a>{' '}
-                (cropped)
-              </>
-            ) : (
-              <>Photo: Unsplash</>
-            )}
-          </motion.p>
         </div>
       </div>
 
