@@ -106,6 +106,14 @@ export default function Hero() {
     return () => window.clearInterval(timer);
   }, [isPlaying]);
 
+  // Preload the next slide so it is ready before the carousel reaches it.
+  useEffect(() => {
+    const next = slides[(index + 1) % slides.length];
+    const preloader = new Image();
+    preloader.src = next.src;
+    preloader.decoding = 'async';
+  }, [index]);
+
   const activeSlide = slides[index];
 
   return (
@@ -134,7 +142,11 @@ export default function Hero() {
                 src={slide.src}
                 alt={isActive ? slide.alt : ''}
                 className="h-full w-full object-cover"
-                loading={slideIndex === 0 ? 'eager' : 'lazy'}
+                width={1920}
+                height={1080}
+                loading={slideIndex <= 1 ? 'eager' : 'lazy'}
+                fetchPriority={slideIndex === 0 ? 'high' : 'low'}
+                decoding="async"
                 initial={false}
                 animate={{
                   scale: isActive && !prefersReducedMotion ? 1.06 : 1,

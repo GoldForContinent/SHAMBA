@@ -60,6 +60,16 @@ Free, commercially usable images of the traded forms (verified as of this writin
 Note: the Maroua tannery set on Commons (CC0) mixes sheep, crocodile and varan (monitor lizard)
 skins — avoid the "varan" and "crocodile" files when picking product photography.
 
+Hero images are re-encoded for the web with `sharp-cli` so the carousel never shows a blank
+slide:
+
+```powershell
+npx sharp-cli -i app/public/images/hero/hides-kenya.jpg -o out.jpg resize 1200 --mozjpeg -q 68
+```
+
+Keep each hero file under ~300 KB. The first two slides load eagerly (the first at high
+fetch priority) and `Hero.tsx` preloads the next slide whenever the active slide changes.
+
 Paid stock alternatives if Dijon Prime wants guaranteed subject-accurate photography:
 [Shutterstock — wet blue leather](https://www.shutterstock.com/search/wet-blue-leather),
 [Alamy — wet blue hides](https://www.alamy.com/search.html?qt=wet%20blue%20hides),
