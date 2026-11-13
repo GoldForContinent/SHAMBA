@@ -26,7 +26,7 @@ type HeroSlide = {
 const slides: HeroSlide[] = [
   {
     src: '/images/hero/wet-blue.jpg',
-    alt: 'Chrome-tanned (wet blue) hides stacked at a tannery',
+    alt: 'Stack of chrome-tanned (wet blue) hides',
     focus: 'Hides & Skins',
     caption: 'Wet blue hides awaiting finishing',
     credit: {
@@ -39,15 +39,14 @@ const slides: HeroSlide[] = [
   },
   {
     src: '/images/hero/wet-salted.jpg',
-    alt: 'Sheep skins being soaked and salted for curing at a tannery',
+    alt: 'Stacked goat skins in pale and blue-grey grades',
     focus: 'Hides & Skins',
-    caption: 'Wet salted hides and skins curing',
+    caption: 'Salted hides and skins, graded by size and weight',
     credit: {
-      author: 'OUMAROU OB',
-      license: 'CC0',
-      licenseUrl: 'https://creativecommons.org/publicdomain/zero/1.0/',
-      sourceUrl:
-        'https://commons.wikimedia.org/wiki/File:Mise_en_eau_de_la_peau_pour_la_transformation_en_cuire_au_centre_pilote_de_traitement_du_cuire_de_Maroua_au_Cameroun_01.jpg',
+      author: 'Salil Kumar Mukherjee',
+      license: 'CC BY-SA 4.0',
+      licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
+      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Goat_skins.jpg',
     },
   },
   {

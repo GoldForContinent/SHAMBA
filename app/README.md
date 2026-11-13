@@ -28,7 +28,7 @@ maize is deliberately kept as the final slide:
 | Slide | File | Source | Licence |
 |-------|------|--------|---------|
 | 1 — Hides & Skins (wet blue) | `public/images/hero/wet-blue.jpg` | [Myousry6666, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Leather_tanneries_(40).jpg) | CC BY-SA 4.0 |
-| 2 — Hides & Skins (wet salted) | `public/images/hero/wet-salted.jpg` | [OUMAROU OB, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Mise_en_eau_de_la_peau_pour_la_transformation_en_cuire_au_centre_pilote_de_traitement_du_cuire_de_Maroua_au_Cameroun_01.jpg) | CC0 (public domain) |
+| 2 — Hides & Skins (salted) | `public/images/hero/wet-salted.jpg` | [Salil Kumar Mukherjee, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Goat_skins.jpg) | CC BY-SA 4.0 |
 | 3 — Hides & Skins (sun-dried) | `public/images/hero/hides-stretched.jpg` | [Enda012, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Stretched_Cowhide_Skin.jpg) | CC BY 4.0 |
 | 4 — Hides & Skins (field-dried) | `public/images/hero/hides-kenya.jpg` | [Lebu Ayiga, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Animal_hides_drying_at_Mai_Mahiu_Viewpoint,_Great_Rift_Valley,_Kenya.jpg) | CC BY 4.0 |
 | 5 — Cereals & Pulses | Unsplash (remote URL) | [Unsplash](https://images.unsplash.com/photo-1625246333195-78d9c38ad449) | Unsplash Licence |
@@ -50,9 +50,13 @@ Free, commercially usable images of the traded forms (verified as of this writin
 | Wet salted hides | [Salted hides — A+B HIDES](https://www.aplusb-hides.de/wp-content/uploads/2018/08/05.jpg) | Copyright — permission required |
 | Wet salted skins | [Salted pelts — Flickr](https://www.flickr.com/photos/baalands/48816573741/) | All rights reserved — ask the photographer before use |
 | Salting skins | [Salting pelts — Flickr](https://www.flickr.com/photos/baalands/48816715377/) | All rights reserved — ask the photographer before use |
-| Tannery processing (CC0 set) | [Maroua tannery — Commons](https://commons.wikimedia.org/wiki/Category:Tanneries_in_Cameroon) | CC0 |
+| Goat skins (product only) | [Goat skins — Commons](https://commons.wikimedia.org/wiki/File:Goat_skins.jpg) | CC BY-SA 4.0 |
+| Pile of leather (product only) | [Leather.jpg — Commons](https://commons.wikimedia.org/wiki/File:Leather.jpg) | CC BY-SA 3.0 |
 | Tanning stages | [Niger tannery — Commons](https://commons.wikimedia.org/wiki/Category:Tanneries_in_Niger) | CC BY-SA 4.0 |
 | Tannery stacks of leather | [Leather in Egypt — Commons](https://commons.wikimedia.org/wiki/Category:Leather_in_Egypt) | CC BY-SA 4.0 |
+
+Note: the Maroua tannery set on Commons (CC0) mixes sheep, crocodile and varan (monitor lizard)
+skins — avoid the "varan" and "crocodile" files when picking product photography.
 
 Paid stock alternatives if Dijon Prime wants guaranteed subject-accurate photography:
 [Shutterstock — wet blue leather](https://www.shutterstock.com/search/wet-blue-leather),
